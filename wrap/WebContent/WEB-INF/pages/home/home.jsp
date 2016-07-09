@@ -8,11 +8,11 @@
 <base href="${base}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>${title}</title>
-<link rel="stylesheet" type="text/css" href="/wrap/resources/css/main.css" />
-<link rel="stylesheet" type="text/css" href="/wrap/resources/css/slides.css" />
-<script src="/wrap/resources/js/jquery-1.9.1.min.js"></script>
-<script src="/wrap/resources/js/slidesjs/jquery.SuperSlide.2.1.1.js"></script>
-<script src="/wrap/resources/js/common/common.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+<link rel="stylesheet" type="text/css" href="resources/css/slides.css" />
+<script src="resources/js/jquery-1.9.1.min.js"></script>
+<script src="resources/js/slidesjs/jquery.SuperSlide.2.1.1.js"></script>
+<script src="resources/js/common/common.js"></script>
 
 <style>
 
@@ -42,9 +42,9 @@
 			</div>
 			<div class="bd">
 				<ul>
-					<li><img src="../resources/imgs/home/home1.png" /></li>
-					<li><img src="../resources/imgs/home/home2.png" /></li>
-					<li><img src="../resources/imgs/home/home3.png" /></li>
+					<li><img src="resources/imgs/home/home1.png" /></li>
+					<li><img src="resources/imgs/home/home2.png" /></li>
+					<li><img src="resources/imgs/home/home3.png" /></li>
 				</ul>
 			</div>
 

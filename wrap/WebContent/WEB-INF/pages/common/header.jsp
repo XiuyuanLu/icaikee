@@ -1,7 +1,7 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <div class="head">	
 	<div class="logo">
-		<img src="/wrap/resources/imgs/header.png" height="90" />
+		<img src="resources/imgs/header.png" height="90" />
 	</div>
 	<div class="title">
 		<span class="title-main">缠&nbsp;论&nbsp;君</span><br/>

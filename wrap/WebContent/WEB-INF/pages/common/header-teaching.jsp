@@ -13,7 +13,7 @@
 </div>
 <div class="head-sub">
 	<div class="logo">
-		<img src="/wrap/resources/imgs/header-black.png" height="80" />
+		<img src="resources/imgs/header-black.png" height="80" />
 	</div>
 	<div class="title">
 		<span class="title-main">缠&nbsp;论&nbsp;君</span><br/>
