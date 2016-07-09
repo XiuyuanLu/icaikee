@@ -34,10 +34,10 @@
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container">
 		<div class="info">
-			<form class="myForm" action="" method="post">
-			  <p>章&nbsp;节: <input type="text" name="chapter" /></p>
-			  <p>漫画名称: <input type="text" name="cartoonName" /></p>
-			  <p>文件: <input type="file" name="file" /></p>
+			<form class="myForm" action="page/manage/cartoon/upload" method="post" enctype="multipart/form-data">
+			 <!--  <p>章&nbsp;节: <input type="text" name="chapterId" /></p>
+			  <p>漫画名称: <input type="text" name="cartoonName" /></p> -->
+			  <p>文件: <input type="file" name="img" /></p>
 			  <input type="submit" value="上传" />
 			</form>
 		</div>

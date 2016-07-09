@@ -25,7 +25,7 @@ public class TeachingController {
 	public ModelAndView cartoon() {
 		logger.info("teaching cartoon page");
 		ModelAndView mv = new ModelAndView(TEACHING_CARTOON_PAGE);
-		mv.addObject("url", "http://localhost:8888/img/home1.png");
+		mv.addObject("url", "http://localhost:8888/img/test002img");
 		return mv;
 	}
 }
