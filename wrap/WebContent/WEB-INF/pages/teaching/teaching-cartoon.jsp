@@ -9,8 +9,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
 <title>${title}</title>
-<link rel="stylesheet" type="text/css" href="/wrap/resources/css/main.css" />
-<script src="/wrap/resources/js/common/common.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+<script src="resources/js/common/common.js"></script>
 <style>
 
 .container .content-box .content-table{

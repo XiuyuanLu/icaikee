@@ -13,14 +13,17 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
-.container .content-box .content-table{
-	margin: 160px 240px 20px 300px;
+.container .info {
+	position: absolute;
+	left: 400px;
+	top: 250px;
+	border: 1px solid;
+	border-color: #e6e0e0;
+	padding: 50px 100px;
 }
 
-.container .content-box .content-table .item{
-	padding: 30px 150px;
-	margin: 10px 20px;
-	border: 3px dashed;	
+.container .info .myForm{
+
 }
 
 </style>
@@ -28,33 +31,21 @@
 </head>
 
 <body>
-	<%@include file="/WEB-INF/pages/common/header-teaching.jsp" %>
+	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container">
-		<div class="content-box">
-			<table class="content-table" id="content-table">
-				<tr>
-					<td><div class="item"><a href="/wrap/page/teaching/cartoon">1</a></div></td>
-					<td><div class="item">1</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">1</div></td>
-					<td><div class="item">1</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">1</div></td>
-					<td><div class="item">1</div></td>
-				</tr>
-				<tr>
-					<td><div class="item">1</div></td>
-					<td><div class="item">1</div></td>
-				</tr>
-			</table>
+		<div class="info">
+			<form class="myForm" action="" method="post">
+			  <p>章&nbsp;节: <input type="text" name="chapter" /></p>
+			  <p>漫画名称: <input type="text" name="cartoonName" /></p>
+			  <p>文件: <input type="file" name="file" /></p>
+			  <input type="submit" value="上传" />
+			</form>
 		</div>
 	</div>
-	
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
+		
 	</script>
 	
 </body>
