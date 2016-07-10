@@ -35,6 +35,9 @@ public class CartoonInfo {
 	@Column(name = "AUTHOR")
 	private String author;
 
+	@Column(name = "SUFFIX")
+	private String suffix;
+
 	public int getId() {
 		return id;
 	}
@@ -81,6 +84,14 @@ public class CartoonInfo {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public String getSuffix() {
+		return suffix;
+	}
+
+	public void setSuffix(String suffix) {
+		this.suffix = suffix;
 	}
 
 }

@@ -6,6 +6,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
+
+import com.icaikee.wrap.web.controller.WebConstants;
 
 public class BaseInterceptor implements HandlerInterceptor {
 
@@ -22,11 +25,16 @@ public class BaseInterceptor implements HandlerInterceptor {
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object arg2) throws Exception {
-		String base = "http://" + request.getServerName() // 服务器地址
-				+ ":" + request.getServerPort() // 端口号
-				+ request.getContextPath() + "/";
-		request.getSession().setAttribute("base", base);
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		if (handler instanceof ResourceHttpRequestHandler)
+			return true;
+		String servletPath = request.getServletPath();
+		if (servletPath.startsWith("/" + WebConstants.PAGE + "/")) {
+			String base = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+					+ request.getContextPath() + "/";
+			request.getSession().setAttribute("base", base);
+		}
 		return true;
 	}
 

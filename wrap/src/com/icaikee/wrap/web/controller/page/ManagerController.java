@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.icaikee.wrap.biz.cartoon.CartoonService;
 import com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto;
+import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -32,8 +33,9 @@ public class ManagerController {
 	}
 
 	@RequestMapping(value = "/cartoon/upload", method = RequestMethod.POST)
-	public ModelAndView cartoonUpload(HttpServletRequest request, @RequestParam(name = "img") MultipartFile img) {
-		CartoonInfoDto cartoon = new CartoonInfoDto("002", "test");
+	public ModelAndView cartoonUpload(HttpServletRequest request, @RequestParam(name = "chapterId") String chapterId,
+			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "img") MultipartFile img) {
+		CartoonInfoDto cartoon = new CartoonInfoDto(chapterId, cartoonName, CartoonInfo.LOCAL_IMG_PATH);
 		cartoonService.saveCartoonInfo(cartoon, img);
 		return new ModelAndView(CARTOON_MANAGE_PAGE);
 	}

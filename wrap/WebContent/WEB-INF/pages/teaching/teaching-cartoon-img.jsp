@@ -13,15 +13,7 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
-.container .content-box .content-table{
-	margin: 160px 240px 20px 300px;
-}
 
-.container .content-box .content-table .item{
-	padding: 30px 150px;
-	margin: 10px 20px;
-	border: 3px dashed;	
-}
 
 </style>
 
@@ -30,15 +22,7 @@
 <body>
 	<%@include file="/WEB-INF/pages/common/header-teaching.jsp" %>
 	<div class="container">
-		<div class="content-box">
-			<table class="content-table" id="content-table">
-				<c:forEach var="item" items="${cartoons}">
-				    <tr>
-						<td><div class="item"><a href="page/teaching/cartoon/img?chapterId=${item.chapterId}&cartoonName=${item.cartoonName}&url=${item.url}">${item.cartoonName}</a></div></td>
-					</tr>
-				</c:forEach> 
-			</table>
-		</div>
+		<img src="${url}">
 	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	

@@ -26,7 +26,7 @@
     
     <mvc:interceptors>  
 		<mvc:interceptor>  
-	    	<mvc:mapping path="/page/*" /> 
+	    	<mvc:mapping path="/page/**" /> 
 	    	<bean class="com.icaikee.wrap.web.interceptor.BaseInterceptor" />  
 		</mvc:interceptor>  
  	</mvc:interceptors>
