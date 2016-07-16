@@ -10,7 +10,7 @@
 	<div class="menu">
 		<ul class="sub-menu">
 			<li class="sub-item"><a href="javascript:void(0)">首页</a></li>
-			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/teaching/index')">教学</a></li>
+			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/teaching/cartoon')">教学</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">复盘</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">缠论指标</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">财经三分钟</a></li>

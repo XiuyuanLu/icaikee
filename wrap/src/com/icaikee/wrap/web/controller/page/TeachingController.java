@@ -17,19 +17,12 @@ import com.icaikee.wrap.web.controller.WebConstants;
 @RequestMapping(WebConstants.PAGE + "/teaching")
 public class TeachingController {
 
-	private final static String TEACHING_INDEX_PAGE = "teaching/teaching-index";
 	private final static String TEACHING_CARTOON_PAGE = "teaching/teaching-cartoon";
 	private final static String TEACHING_CARTOON_PAGE_IMG = "teaching/teaching-cartoon-img";
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
 	private CartoonService cartoonService;
-
-	@RequestMapping("/index")
-	public ModelAndView home() {
-		logger.info("teaching index page");
-		return new ModelAndView(TEACHING_INDEX_PAGE);
-	}
 
 	@RequestMapping("/cartoon")
 	public ModelAndView cartoon() {

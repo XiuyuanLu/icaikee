@@ -94,6 +94,8 @@ body{
 
 .head-parent .menu-parent{
 	float: left; 
+	position:absolute;
+	left: 130px;
 }
 
 .head-parent .menu-parent ul{
@@ -164,4 +166,18 @@ body{
 
 .head-sub .menu-second .sub-menu li{
 	float: left;
+}
+
+#triangle-down {
+	z-index:100;
+	position: absolute;
+    width: 0;
+    height: 0;
+    top:50px;
+    left: 365px;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 16px solid #2c2c2c;
+    transition: all;
+    transition-duration:0.5s;
 }

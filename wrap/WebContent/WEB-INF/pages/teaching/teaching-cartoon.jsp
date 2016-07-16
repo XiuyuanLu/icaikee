@@ -10,6 +10,7 @@
 <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate"> 
 <title>${title}</title>
 <link rel="stylesheet" type="text/css" href="resources/css/main.css" />
+<script src="resources/js/jquery-1.9.1.min.js"></script>
 <script src="resources/js/common/common.js"></script>
 <style>
 
@@ -28,7 +29,7 @@
 </head>
 
 <body>
-	<%@include file="/WEB-INF/pages/common/header-teaching.jsp" %>
+	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container">
 		<div class="content-box">
 			<table class="content-table" id="content-table">
@@ -43,7 +44,9 @@
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
-		
+		function onLoad(){
+			showBar("1");
+		}
 	</script>
 	
 </body>
