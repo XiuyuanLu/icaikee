@@ -46,6 +46,7 @@
 	<script>
 		function onLoad(){
 			showBar("1");
+			highlightItem("i1");
 		}
 	</script>
 	

@@ -4,6 +4,25 @@ $(document).ready(function (){
 	}
 });
 
+window.onscroll = function () {  
+    var top = document.documentElement.scrollTop || document.body.scrollTop;  
+    var hp = $('#head-parent');
+    var ta = $('#triangle-down');
+    var hs = $('#head-sub');
+    if(top>10){
+    	hp.css("top","-50px");
+    	hs.css("top","0px");
+    	ta.css("display","none");
+    }
+    else{
+    	hp.css("top","0px");
+    	hs.css("top","50px");
+    	ta.css("display","");
+    	ta.css("top","50px");
+    }
+    	
+};
+
 function redirect(path){
 	location.href=path;
 }
@@ -51,4 +70,9 @@ function showBar(title){
 		m5.style.display="";
 		triangle.css("left",1000);
 	}
+}
+
+function highlightItem(id){
+	var item = $("#"+id);
+	item.css('color','#2c2c2c');
 }
