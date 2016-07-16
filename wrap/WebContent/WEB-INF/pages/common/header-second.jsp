@@ -23,7 +23,7 @@
 	<div id="menu-second-1" class="menu-second" style="display:none">
 		<ul class="sub-menu">
 			<li class="sub-item"><a id="i1" href="javascript:void(0)" onclick="redirect('page/teaching/cartoon')">从零开始学<br/>缠论漫画</a></li>
-			<li class="sub-item"><a id="i2" href="javascript:void(0)">从零开始学<br/>缠论视频</a></li>
+			<li class="sub-item"><a id="i2" href="javascript:void(0)" onclick="redirect('page/teaching/video')">从零开始学<br/>缠论视频</a></li>
 			<li class="sub-item"><a id="i3" href="javascript:void(0)">第二本缠<br/>论教学</a></li>
 			<li class="sub-item"><a id="i4" href="javascript:void(0)">第三本缠<br/>论教学</a></li>
 			<li class="sub-item"><a id="i5" href="javascript:void(0)">收费缠论<br/>教学</a></li>

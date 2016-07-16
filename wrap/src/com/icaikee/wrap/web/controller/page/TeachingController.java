@@ -19,6 +19,8 @@ public class TeachingController {
 
 	private final static String TEACHING_CARTOON_PAGE = "teaching/teaching-cartoon";
 	private final static String TEACHING_CARTOON_PAGE_IMG = "teaching/teaching-cartoon-img";
+
+	private final static String TEACHING_VIDEO_PAGE = "teaching/teaching-video";
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
@@ -41,6 +43,13 @@ public class TeachingController {
 		mv.addObject("chapterId", chapterId);
 		mv.addObject("cartoonName", cartoonName);
 		mv.addObject("url", url);
+		return mv;
+	}
+
+	@RequestMapping("/video")
+	public ModelAndView video() {
+		logger.info("video index");
+		ModelAndView mv = new ModelAndView(TEACHING_VIDEO_PAGE);
 		return mv;
 	}
 }
