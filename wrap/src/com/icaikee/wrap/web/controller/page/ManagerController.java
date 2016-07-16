@@ -22,6 +22,10 @@ public class ManagerController {
 
 	private final static String CARTOON_MANAGE_PAGE = "manage/cartoon";
 
+	private final static String VIDEO_MANAGE_PAGE = "manage/video";
+
+	private final static String REVIEW_MANAGE_PAGE = "manage/review";
+
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
@@ -32,12 +36,23 @@ public class ManagerController {
 		return new ModelAndView(CARTOON_MANAGE_PAGE);
 	}
 
+	@RequestMapping("/review")
+	public ModelAndView reviewPage() {
+		return new ModelAndView(REVIEW_MANAGE_PAGE);
+	}
+
 	@RequestMapping(value = "/cartoon/upload", method = RequestMethod.POST)
 	public ModelAndView cartoonUpload(HttpServletRequest request, @RequestParam(name = "chapterId") String chapterId,
 			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "img") MultipartFile img) {
 		CartoonInfoDto cartoon = new CartoonInfoDto(chapterId, cartoonName, CartoonInfo.LOCAL_IMG_PATH);
 		cartoonService.saveCartoonInfo(cartoon, img);
 		return new ModelAndView(CARTOON_MANAGE_PAGE);
+	}
+
+	@RequestMapping(value = "/video/upload", method = RequestMethod.POST)
+	public ModelAndView videoUpload(HttpServletRequest request, @RequestParam(name = "video") MultipartFile video) {
+
+		return new ModelAndView(VIDEO_MANAGE_PAGE);
 	}
 
 }

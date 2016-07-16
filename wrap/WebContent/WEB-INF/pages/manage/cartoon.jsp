@@ -21,8 +21,8 @@
 	padding: 50px 100px;
 }
 
-.container .info .myForm{
-
+.container .info .myForm input['submit']{
+	font-size: 20px;
 }
 
 </style>

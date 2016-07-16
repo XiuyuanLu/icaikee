@@ -10,7 +10,7 @@
 	<div class="menu">
 		<ul class="sub-menu" >
 			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/manage/cartoon')">漫画上传</a></li>
-			<li class="sub-item"><a href="javascript:void(0)">复盘上传</a></li>
+			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/manage/review')">复盘上传</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">视频上传</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">财经上传</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">联系我们管理</a></li>
