@@ -16,9 +16,9 @@ public class CartoonInfoDto {
 
 	}
 
-	public CartoonInfoDto(String cartoonName, String chapterId, String url) {
-		this.cartoonName = cartoonName;
+	public CartoonInfoDto(String chapterId, String cartoonName, String url) {
 		this.chapterId = chapterId;
+		this.cartoonName = cartoonName;
 		this.url = url;
 	}
 

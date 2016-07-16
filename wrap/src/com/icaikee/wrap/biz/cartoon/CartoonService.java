@@ -67,7 +67,7 @@ public class CartoonService {
 
 	public List<CartoonInfoDto> getCartoons() {
 		return dao.find(CartoonInfoDto.class,
-				"select new com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto(x.name,x.chapterId,x.url) from CartoonInfo x");
+				"select new com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto(x.chapterId,x.name,x.url) from CartoonInfo x");
 	}
 
 }

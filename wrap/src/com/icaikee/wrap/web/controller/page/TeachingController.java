@@ -38,6 +38,8 @@ public class TeachingController {
 			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "url") String url) {
 		logger.info("teaching cartoon IMG page");
 		ModelAndView mv = new ModelAndView(TEACHING_CARTOON_PAGE_IMG);
+		mv.addObject("chapterId", chapterId);
+		mv.addObject("cartoonName", cartoonName);
 		mv.addObject("url", url);
 		return mv;
 	}
