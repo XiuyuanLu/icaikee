@@ -34,7 +34,7 @@
 	<div class="container">
 		<div class="info">
 			<form class="myForm" action="page/manage/video/upload" method="post" enctype="multipart/form-data">
-			  <p>文件: <input type="file" name="img" /></p>
+			  <p>文件: <input type="file" name="video" /></p>
 			  <input type="submit" value="上传" />
 			</form>
 		</div>

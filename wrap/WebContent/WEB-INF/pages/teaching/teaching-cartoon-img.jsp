@@ -13,19 +13,28 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
-#cartoon{
+.container .cartoon{
 	position:absolute;
-	top: 150px;
+	top: 50px;
 	left: 390px;
 	bottom: 50px;
+	display: block;
+	height: 100%;
+	overflow: visible;
+	border: 1px solid ;
+	margin: 10px;
 }
 
-#cartoon-title h3{
+.container .cartoon-title h3{
 	text-align: center;
 	font-size: 30px;
 }
 
-#cartoon-content img{
+.container .cartoon-content{
+	height: 100%;
+}
+
+.container .cartoon-content img{
 	max-width: 500px;
 }
 
@@ -35,13 +44,13 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
-	<div class="container">
-		<div id="cartoon">
-			<div id="cartoon-title">
+	<div class="container clearfix">
+		<div id="cartoon" class="cartoon">
+			<div id="cartoon-title" class="cartoon-title">
 				<h3>${chapterId}:${cartoonName}</h3>
 			</div>
-			<div id="cartoon-content">
-				<img src="${url}">
+			<div id="cartoon-content" class="cartoon-content">
+				<img id="img" src="${url}" />
 			</div>
 		</div>
 	</div>
@@ -51,6 +60,9 @@
 		function onLoad(){
 			showBar("1");
 			highlightItem("i1");
+			$('#cartoon-content').css('height',$("#img").outerHeight(true)+$("#cartoon-title h3").outerHeight(true));
+			$('#cartoon').css('height',$("#img").outerHeight(true)+$("#cartoon-title h3").outerHeight(true));
+			$('.container').css('height',$("#img").outerHeight(true)+$("#cartoon-title h3").outerHeight(true));
 		}
 	</script>
 	

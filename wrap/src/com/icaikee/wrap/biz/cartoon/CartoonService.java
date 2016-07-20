@@ -65,9 +65,13 @@ public class CartoonService {
 		return WebConstants.SUCCESS;
 	}
 
-	public List<CartoonInfoDto> getCartoons() {
-		return dao.find(CartoonInfoDto.class,
-				"select new com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto(x.chapterId,x.name,x.url) from CartoonInfo x");
+	public List<CartoonInfo> getCartoons() {
+		return dao.find(CartoonInfo.class, "select x from CartoonInfo x");
+	}
+
+	public CartoonInfo getSingleCartoonByChapterId(String chapterId) {
+		return dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.chapterId=?", chapterId);
+
 	}
 
 }

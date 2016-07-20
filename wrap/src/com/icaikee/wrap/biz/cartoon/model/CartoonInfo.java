@@ -38,6 +38,9 @@ public class CartoonInfo {
 	@Column(name = "SUFFIX")
 	private String suffix;
 
+	@Column(name = "index_Url")
+	private String indexUrl;
+
 	public int getId() {
 		return id;
 	}
@@ -92,6 +95,14 @@ public class CartoonInfo {
 
 	public void setSuffix(String suffix) {
 		this.suffix = suffix;
+	}
+
+	public String getIndexUrl() {
+		return indexUrl;
+	}
+
+	public void setIndexUrl(String indexUrl) {
+		this.indexUrl = indexUrl;
 	}
 
 }

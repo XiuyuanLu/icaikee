@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.icaikee.wrap.biz.cartoon.CartoonService;
 import com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto;
 import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
+import com.icaikee.wrap.biz.video.VideoService;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -31,14 +32,27 @@ public class ManagerController {
 	@Autowired
 	CartoonService cartoonService;
 
+	@Autowired
+	VideoService videoService;
+
 	@RequestMapping("/cartoon")
 	public ModelAndView cartoonPage() {
-		return new ModelAndView(CARTOON_MANAGE_PAGE);
+
+		ModelAndView mv = new ModelAndView(CARTOON_MANAGE_PAGE);
+
+		mv.addObject("cartoons", cartoonService.getCartoons());
+
+		return mv;
 	}
 
 	@RequestMapping("/review")
 	public ModelAndView reviewPage() {
 		return new ModelAndView(REVIEW_MANAGE_PAGE);
+	}
+
+	@RequestMapping("/video")
+	public ModelAndView videoPage() {
+		return new ModelAndView(VIDEO_MANAGE_PAGE);
 	}
 
 	@RequestMapping(value = "/cartoon/upload", method = RequestMethod.POST)
@@ -51,7 +65,7 @@ public class ManagerController {
 
 	@RequestMapping(value = "/video/upload", method = RequestMethod.POST)
 	public ModelAndView videoUpload(HttpServletRequest request, @RequestParam(name = "video") MultipartFile video) {
-
+		videoService.upload(video);
 		return new ModelAndView(VIDEO_MANAGE_PAGE);
 	}
 

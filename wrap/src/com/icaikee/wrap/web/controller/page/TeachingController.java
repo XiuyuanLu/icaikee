@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icaikee.wrap.biz.cartoon.CartoonService;
-import com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto;
+import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -30,7 +30,7 @@ public class TeachingController {
 	public ModelAndView cartoon() {
 		logger.info("cartoon index");
 		ModelAndView mv = new ModelAndView(TEACHING_CARTOON_PAGE);
-		List<CartoonInfoDto> cartoons = cartoonService.getCartoons();
+		List<CartoonInfo> cartoons = cartoonService.getCartoons();
 		mv.addObject("cartoons", cartoons);
 		return mv;
 	}

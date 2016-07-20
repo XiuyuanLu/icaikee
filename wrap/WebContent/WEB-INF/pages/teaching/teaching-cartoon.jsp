@@ -15,24 +15,31 @@
 
 .container .content-box{
 	position: absolute;
-	left: 400px;
-	top: 150px;
+	top: 30px;
+	left: 100px;
+	width:100%;
+	display: inline;
 }
 
-
-.container .content-box .content-table .item{
-	padding: 30px 150px;
-	margin: 10px 20px;
-	border: 3px dashed;	
+.container .content-box .item{
+	border: 1px solid #abaaaa;
+	padding: 3px;	
+	text-align:center;
+	width:270px;
+	float: left;
 }
 
-.container .content-box .content-table .item a{
-	font-size:30px;
+.container .content-box .item .item-img img{
+	height: 200px;
+}
+
+.container .content-box .item a{
+	font-size:15px;
 	color: #abaaaa;
 	text-decoration: none;
 }
 
-.container .content-box .content-table .item a:hover{
+.container .content-box .item a:hover{
 	color: #2c2c2c;
 	text-decoration: underline;
 }
@@ -45,16 +52,14 @@
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container">
 		<div class="content-box">
-			<table class="content-table" id="content-table">
-				<c:forEach var="item" items="${cartoons}">
-				    <tr>
-						<td><div class="item">
-								<a href="page/teaching/cartoon/img?chapterId=${item.chapterId}&cartoonName=${item.cartoonName}&url=${item.url}">${item.chapterId}</a>
-							</div>
-						</td>
-					</tr>
-				</c:forEach> 
-			</table>
+			<c:forEach var="item" items="${cartoons}">
+				<div class="item">
+					<div class="item-img">
+						<img src="${item.indexUrl}" />
+					</div>
+					<a href="page/teaching/cartoon/img?chapterId=${item.chapterId}&cartoonName=${item.name}&url=${item.url}">${item.chapterId}</a>
+				</div>
+			</c:forEach> 
 		</div>
 	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>

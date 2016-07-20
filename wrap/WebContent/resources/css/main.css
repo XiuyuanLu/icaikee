@@ -4,6 +4,7 @@ body{
 	font-family: "Microsoft YaHei","黑体","宋体",sans-serif;
 	font-size: 12px;
 	line-height: 1.5;
+	overflow-x:hidden;
 }
 
 .head {
@@ -64,17 +65,6 @@ body{
 
 .head .menu .sub-menu a:hover{
 	background-color: #928d8d;
-}
-
-.footer .copyright{
-	text-align: center;
-	color: #B8AFAF;
-}
-
-.container{
-	margin-top:105px;
-	width: 100%;
-	min-height: 500px;
 }
 
 .head-parent{
@@ -184,4 +174,36 @@ body{
     border-top: 16px solid #2c2c2c;
     transition: all;
     transition-duration:0.5s;
+}
+
+
+.container{
+	position:absolute;
+	top: 130px;
+	width: 100%;
+	min-height: 520px;
+	overflow:visible;
+	background-image: url(../imgs/bg.png);
+	background-repeat: repeat-y;
+}
+
+.clearfix { 
+  *zoom: 1; 
+} 
+
+.clearfix:before, 
+.clearfix:after { 
+  display: table; 
+  line-height: 0; 
+  content: ""; 
+
+} 
+
+.clearfix:after { 
+  clear: both; 
+} 
+
+.footer .copyright{
+	text-align: center;
+	color: #B8AFAF;
 }
