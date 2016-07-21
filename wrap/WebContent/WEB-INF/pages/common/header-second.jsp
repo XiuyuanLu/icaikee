@@ -6,8 +6,7 @@
 			<li class="sub-item"><a href="javascript:void(0)" onmouseover="showBar('1')">教学</a></li>
 			<li class="sub-item"><a href="javascript:void(0)" onmouseover="showBar('2')">复盘</a></li>
 			<li class="sub-item"><a href="javascript:void(0)" onmouseover="showBar('3')">缠论指标</a></li>
-			<li class="sub-item"><a href="javascript:void(0)" onmouseover="showBar('4')">财经三分钟</a></li>
-			<li class="sub-item"><a href="javascript:void(0)" onmouseover="showBar('5')">联系我们</a></li>
+			<li class="sub-item"><a href="javascript:void(0)" onmouseover="showBar('4')">联系我们</a></li>
 		</ul>
 	</div>
 </div>
@@ -47,14 +46,6 @@
 	</div>
 	
 	<div id="menu-second-4" class="menu-second" style="display:none">
-		<ul class="sub-menu">
-			<li class="sub-item"><a href="javascript:void(0)">财经一</a></li>
-			<li class="sub-item"><a href="javascript:void(0)">财经二</a></li>
-			<li class="sub-item"><a href="javascript:void(0)">财经三</a></li>
-		</ul>
-	</div>
-	
-	<div id="menu-second-5" class="menu-second" style="display:none">
 		<ul class="sub-menu">
 			<li class="sub-item"><a href="javascript:void(0)">联系一</a></li>
 		</ul>

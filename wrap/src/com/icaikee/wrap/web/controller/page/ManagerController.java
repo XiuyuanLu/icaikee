@@ -21,6 +21,8 @@ import com.icaikee.wrap.web.controller.WebConstants;
 @RequestMapping(WebConstants.PAGE + "/manage")
 public class ManagerController {
 
+	private final static String LOGIN_PAGE = "manage/login";
+
 	private final static String CARTOON_MANAGE_PAGE = "manage/cartoon";
 
 	private final static String VIDEO_MANAGE_PAGE = "manage/video";
@@ -34,6 +36,17 @@ public class ManagerController {
 
 	@Autowired
 	VideoService videoService;
+
+	@RequestMapping
+	public ModelAndView loginPage() {
+		return new ModelAndView(LOGIN_PAGE);
+	}
+
+	@RequestMapping("/login")
+	public ModelAndView login(@RequestParam(name = "username") String username,
+			@RequestParam(name = "password") String password) {
+		return new ModelAndView(CARTOON_MANAGE_PAGE);
+	}
 
 	@RequestMapping("/cartoon")
 	public ModelAndView cartoonPage() {

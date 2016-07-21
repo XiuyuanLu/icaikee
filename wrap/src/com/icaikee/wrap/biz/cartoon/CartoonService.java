@@ -74,4 +74,24 @@ public class CartoonService {
 
 	}
 
+	@Transactional
+	public String updateSingleCartoonByChapterId(String origChapterId, String chapterId, String cartoonName) {
+		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.chapterId=?",
+				origChapterId);
+		if (x != null) {
+			x.setChapterId(chapterId);
+			x.setName(cartoonName);
+			dao.update(x);
+		}
+		return WebConstants.SUCCESS;
+	}
+
+	@Transactional
+	public String deleteSingleCartoonByChapterId(String chapterId) {
+		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.chapterId=?", chapterId);
+		if (x != null)
+			dao.delete(x);
+		return WebConstants.SUCCESS;
+	}
+
 }
