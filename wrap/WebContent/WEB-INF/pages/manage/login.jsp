@@ -38,25 +38,42 @@
 <body>
 	<div class="container">
 		<div id="login" class="login">
-			<form class="myForm" action="page/manage/login" method="post">
-			  <p>用户名: <input type="text" name="username" /></p>
-			  <p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <input type="password" name="password" /></p>
-			  <input type="submit" value="登录" />
-			</form>
+			  <p>用户名: <input type="text" id="username" /></p>
+			  <p>密&nbsp;&nbsp;&nbsp;&nbsp;码: <input type="password" id="password" /></p>
+			  <input type="button" value="登录" onclick="login()" />
 		</div>		
 	</div>
 	
 	<script>
-		function query(chapterId){
+		function login(){
+			var username=document.getElementById("username").value;
+			var password=document.getElementById("password").value;
+			if($.trim(username)==""){
+				alert("请输入用户名");
+				return ;
+			}
+			if($.trim(password)==""){
+				alert("请输入密码");
+				return ;
+			}
 			$.ajax({
-				url:"",
+				url:"api/authenticate/login",
 				data:{
+					username: username,
+					password: password
 				},
+				type: 'POST',
 				dataType: 'json',
 				success:function(data){
+					jump();
 				}
 			});
 		}
+		
+		function jump(){
+			location.href="page/manage/cartoon";
+		}
+		
 	</script>
 	
 </body>

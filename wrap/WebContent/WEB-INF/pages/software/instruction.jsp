@@ -13,32 +13,33 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
-.container .cartoon{
+.container .content-box{
 	position: relative;
 	top: 50px;
-	left: 390px;
-	display: block;
-	overflow: visible;
-	margin: 10px;
-	width:500px;
+	left: 100px;
+	width:100%;
+	height:100%;
 }
 
-.container .cartoon-title h3{
+.container .content-box .software-title{
 	text-align: center;
-	font-size: 30px;
+	position: absolute;
+	left: 25%;
 }
 
-.container .cartoon-title .img-info{
-	text-align: center;
-	font-size: 18px;
+.container .content-box .software-title h3{
+	font-size: 20px;
 }
 
-.container .cartoon-content{
-	height: 100%;
+.container .content-box .software-content{
+	position: absolute;
+	top: 80px;
+	left: 25%;
 }
 
-.container .cartoon-content img{
+.container .content-box .software-content img{
 	max-width: 500px;
+	box-shadow: 0 2px 2px #928d8d;
 }
 
 </style>
@@ -47,18 +48,13 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
-	<div class="container clearfix">
-		<div id="cartoon" class="cartoon" style="min-height: 10100px">
-			<div id="cartoon-title" class="cartoon-title">
-				<h3>${chapterId}:${cartoonName}</h3>
-				<div class="img-info">
-					<span>作者：${author }&nbsp;|&nbsp;浏览次数：122</span>
-					<br/><span id="description" title="${description }">简介：${description }</span>
-				</div>
+	<div class="container">
+		<div class="content-box" style="min-height: 4600px">
+			<div id="software-title" class="software-title">
+				<h3>缠论指标</h3>
 			</div>
-			<br/>
-			<div id="cartoon-content" class="cartoon-content">
-				<img id="img" src="${url}" />
+			<div id="software-content" class="software-content">
+				<img id="img" src="http://localhost:8888/img/指标文案.jpg" />
 			</div>
 		</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
@@ -66,8 +62,8 @@
 	
 	<script>
 		function onLoad(){
-			showBar("1");
-			highlightItem("i1");
+			showBar("3");
+			highlightItem("s1");
 		}
 	</script>
 	

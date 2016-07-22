@@ -31,7 +31,7 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header.jsp" %>
-	<div class="container">
+	<div class="container" style="top: 100px">
 		<div id="slideBox" class="slideBox">
 			<div id="hd" class="hd">
 				<ul>
@@ -50,10 +50,9 @@
 
 			<a class="prev" href="javascript:void(0)"></a>
 			<a class="next" href="javascript:void(0)"></a>
-
 		</div>
-	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
+	</div>
 	
 	<script>
 		jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,titCell: ".hd li",trigger:"click"});

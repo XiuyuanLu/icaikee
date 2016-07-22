@@ -13,35 +13,44 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
-.container .content-box{
-	position: absolute;
-	top: 30px;
+#content-box{
+	position: relative;
+	top: 50px;
 	left: 100px;
 	width:100%;
-	display: inline;
+	height:100%;
 }
 
-.container .content-box .item{
+#content-box .item{
 	border: 1px solid #abaaaa;
-	padding: 3px;	
+	padding: 3px;
+	margin: 5px;		
 	text-align:center;
 	width:270px;
 	float: left;
 }
 
-.container .content-box .item .item-img img{
+#content-box .item .item-img img{
 	height: 200px;
 }
 
-.container .content-box .item a{
+#content-box .item a{
 	font-size:15px;
 	color: #abaaaa;
 	text-decoration: none;
 }
 
-.container .content-box .item a:hover{
+#content-box .item a:hover{
 	color: #2c2c2c;
 	text-decoration: underline;
+}
+
+#description{
+	display: block;
+	width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 </style>
@@ -50,19 +59,22 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
-	<div class="container">
-		<div class="content-box">
+	<div class="container" >
+		<div id="content-box" style="min-height: 800px">
 			<c:forEach var="item" items="${cartoons}">
 				<div class="item">
 					<div class="item-img">
 						<img src="${item.indexUrl}" />
 					</div>
-					<a href="page/teaching/cartoon/img?chapterId=${item.chapterId}&cartoonName=${item.name}&url=${item.url}">${item.chapterId}</a>
+					<a href="page/teaching/cartoon/img?chapterId=${item.chapterId}&cartoonName=${item.name}&url=${item.url}">${item.chapterId}:${item.name}</a>
+					<br/><span>作者：${item.author }&nbsp;|&nbsp;浏览次数：122</span>
+					<br/><span id="description" title="${item.description }">简介：${item.description }</span>
 				</div>
 			</c:forEach> 
 		</div>
-	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
+	</div>
+	
 	
 	<script>
 		function onLoad(){

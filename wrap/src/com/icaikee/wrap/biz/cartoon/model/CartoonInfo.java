@@ -41,6 +41,9 @@ public class CartoonInfo {
 	@Column(name = "index_Url")
 	private String indexUrl;
 
+	@Column(name = "description")
+	private String description;
+
 	public int getId() {
 		return id;
 	}
@@ -103,6 +106,14 @@ public class CartoonInfo {
 
 	public void setIndexUrl(String indexUrl) {
 		this.indexUrl = indexUrl;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

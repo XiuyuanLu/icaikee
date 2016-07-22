@@ -36,13 +36,15 @@ public class TeachingController {
 	}
 
 	@RequestMapping("/cartoon/img")
-	public ModelAndView cartoonImg(@RequestParam(name = "chapterId") String chapterId,
-			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "url") String url) {
+	public ModelAndView cartoonImg(@RequestParam(name = "chapterId") String chapterId) {
 		logger.info("teaching cartoon IMG page");
 		ModelAndView mv = new ModelAndView(TEACHING_CARTOON_PAGE_IMG);
+		CartoonInfo cartoon = cartoonService.getSingleCartoonByChapterId(chapterId);
 		mv.addObject("chapterId", chapterId);
-		mv.addObject("cartoonName", cartoonName);
-		mv.addObject("url", url);
+		mv.addObject("cartoonName", cartoon.getName());
+		mv.addObject("url", cartoon.getUrl());
+		mv.addObject("author", cartoon.getAuthor());
+		mv.addObject("description", cartoon.getDescription());
 		return mv;
 	}
 

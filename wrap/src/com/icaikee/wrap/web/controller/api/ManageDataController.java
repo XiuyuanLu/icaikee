@@ -1,5 +1,8 @@
 package com.icaikee.wrap.web.controller.api;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,14 @@ public class ManageDataController {
 
 	@Autowired
 	private CartoonService cartoonService;
+
+	@RequestMapping("/authenticate/login")
+	public Map<String, String> login(@RequestParam(name = "username") String username,
+			@RequestParam(name = "password") String password) {
+		Map<String, String> result = new HashMap<String, String>();
+		result.put("result", WebConstants.SUCCESS);
+		return result;
+	}
 
 	@RequestMapping("/cartoon/query")
 	public CartoonInfo getSingleCartoonInfo(@RequestParam(name = "chapterId") String chapterId) {
