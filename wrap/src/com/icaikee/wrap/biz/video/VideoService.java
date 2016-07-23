@@ -1,5 +1,7 @@
 package com.icaikee.wrap.biz.video;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -7,7 +9,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.icaikee.wrap.biz.AddressConfig;
 import com.icaikee.wrap.biz.video.model.Video;
 import com.icaikee.wrap.db.hibernate.HibernateDao;
 import com.icaikee.wrap.web.controller.WebConstants;
@@ -20,18 +24,41 @@ public class VideoService {
 	@Autowired
 	private HibernateDao dao;
 
+	@Autowired
+	private AddressConfig addressConfig;
+
 	@Transactional
-	public String upload(String videoName, String videoAuthor, String videoUrl, String videoDescription) {
+	public String upload(String videoName, String videoAuthor, String videoUrl, String videoDescription,
+			MultipartFile indexFile) {
 
 		Video video = getVideo(videoName);
 		if (video != null)
 			return "视频名称已存在";
+
+		String indexAddrSave = addressConfig.getVideoIndexSaveAddress();
+		String indexAddrRead = addressConfig.getVideoIndexReadAddress();
+		String indexFileName = indexFile.getOriginalFilename();
+		String indexFilePath = indexAddrSave + "i-" + videoName + "."
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+		String indexUrl = indexAddrRead + "i-" + videoName + "."
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+
 		video = new Video();
 		video.setVideoName(videoName);
 		video.setVideoAuthor(videoAuthor);
 		video.setVideoUrl(videoUrl);
 		video.setVideoDescription(videoDescription);
 		video.setVideoUploadTime(new Date());
+		video.setVideoIndexUrl(indexUrl);
+		try {
+			indexFile.transferTo(new File(indexFilePath));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		}
 		dao.save(video);
 		return WebConstants.SUCCESS;
 	}

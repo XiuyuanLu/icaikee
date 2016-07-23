@@ -21,6 +21,12 @@ public class AddressConfig {
 	@Value("#{configProperties['imgrepo.software.instruction.address']}")
 	private String softwareInstructionAddress;
 
+	@Value("#{configProperties['imgrepo.video.index.address.save']}")
+	private String videoIndexSaveAddress;
+
+	@Value("#{configProperties['imgrepo.video.index.address.read']}")
+	private String videoIndexReadAddress;
+
 	public String getSaveAddress() {
 		return saveAddress;
 	}
@@ -59,6 +65,22 @@ public class AddressConfig {
 
 	public void setSoftwareInstructionAddress(String softwareInstructionAddress) {
 		this.softwareInstructionAddress = softwareInstructionAddress;
+	}
+
+	public String getVideoIndexSaveAddress() {
+		return videoIndexSaveAddress;
+	}
+
+	public void setVideoIndexSaveAddress(String videoIndexSaveAddress) {
+		this.videoIndexSaveAddress = videoIndexSaveAddress;
+	}
+
+	public String getVideoIndexReadAddress() {
+		return videoIndexReadAddress;
+	}
+
+	public void setVideoIndexReadAddress(String videoIndexReadAddress) {
+		this.videoIndexReadAddress = videoIndexReadAddress;
 	}
 
 }

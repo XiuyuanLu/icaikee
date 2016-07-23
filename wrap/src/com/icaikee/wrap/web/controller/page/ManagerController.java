@@ -84,8 +84,9 @@ public class ManagerController {
 	@RequestMapping(value = "/video/upload", method = RequestMethod.POST)
 	public ModelAndView videoUpload(@RequestParam(name = "videoName") String videoName,
 			@RequestParam(name = "videoAuthor") String videoAuthor, @RequestParam(name = "videoUrl") String videoUrl,
-			@RequestParam(name = "videoDescription") String videoDescription) {
-		videoService.upload(videoName, videoAuthor, videoUrl, videoDescription);
+			@RequestParam(name = "videoDescription") String videoDescription,
+			@RequestParam(name = "indexFile") MultipartFile indexFile) {
+		videoService.upload(videoName, videoAuthor, videoUrl, videoDescription, indexFile);
 		return new ModelAndView(SUCCESS_MANAGE_PAGE);
 	}
 

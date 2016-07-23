@@ -13,44 +13,33 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
-#content-box{
+.container .cartoon{
 	position: relative;
 	top: 50px;
-	left: 100px;
-	width:100%;
-	height:100%;
-}
-
-#content-box .item{
-	border: 1px solid #abaaaa;
-	padding: 3px;
-	margin: 5px;		
-	text-align:center;
-	width:270px;
-	float: left;
-}
-
-#content-box .item .item-img img{
-	height: 200px;
-}
-
-#content-box .item a{
-	font-size:15px;
-	color: #abaaaa;
-	text-decoration: none;
-}
-
-#content-box .item a:hover{
-	color: #2c2c2c;
-	text-decoration: underline;
-}
-
-#description{
+	left: 390px;
 	display: block;
-	width: 100%;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
+	overflow: visible;
+	margin: 10px;
+	margin-bottom: 100px;
+	width:500px;
+}
+
+.container .cartoon-title h3{
+	text-align: center;
+	font-size: 30px;
+}
+
+.container .cartoon-title .img-info{
+	text-align: center;
+	font-size: 18px;
+}
+
+.container .cartoon-content{
+	height: 100%;
+}
+
+.container .cartoon-content img{
+	max-width: 500px;
 }
 
 </style>
@@ -59,22 +48,22 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
-	<div class="container" >
-		<div id="content-box" style="min-height: 800px">
-			<c:forEach var="item" items="${cartoons}">
-				<div class="item">
-					<div class="item-img">
-						<img src="${item.cartoonIndexUrl}" />
-					</div>
-					<a href="page/teaching/cartoon/img?chapterId=${item.cartoonChapterId}&cartoonName=${item.cartoonName}&url=${item.cartoonUrl}">${item.cartoonChapterId}:${item.cartoonName}</a>
-					<br/><span>作者：${item.cartoonAuthor }&nbsp;|&nbsp;浏览次数：122</span>
-					<br/><span id="description" title="${item.cartoonDescription }">简介：${item.cartoonDescription }</span>
+	<div class="container clearfix">
+		<div id="cartoon" class="cartoon" style="min-height: 10100px">
+			<div id="cartoon-title" class="cartoon-title">
+				<h3>${chapterId}:${cartoonName}</h3>
+				<div class="img-info">
+					<span>作者：${author }&nbsp;|&nbsp;浏览次数：122</span>
+					<br/><span id="description" title="${description }">简介：${description }</span>
 				</div>
-			</c:forEach> 
+			</div>
+			<br/>
+			<div id="cartoon-content" class="cartoon-content">
+				<img id="img" src="${url}" />
+			</div>
 		</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
-	
 	
 	<script>
 		function onLoad(){

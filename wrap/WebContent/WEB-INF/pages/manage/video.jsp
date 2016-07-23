@@ -92,6 +92,7 @@ textarea{
 			  <p>视频作者: <input type="text" id="videoAuthor" name="videoAuthor" /></p>
 			  <p>视频链接: <input type="text" id="videoUrl"name="videoUrl" /></p>
 			  <p>视频简介: <br/><textarea id="videoDescription" cols="35" rows="5" name="videoDescription"></textarea></p>
+			  <p>封面文件: <input type="file" id="videoIndexFile" name="indexFile" /></p>
 			  <input type="button" value="上传" onclick="lxySubmit()"/>
 			</form>
 		</div>
@@ -126,6 +127,7 @@ textarea{
 			var videoDescription=document.getElementById("videoDescription").value;
 			var videoAuthor=document.getElementById("videoAuthor").value;
 			var videoUrl=document.getElementById("videoUrl").value;
+			var videoIndex=document.getElementById("videoIndexFile").value;
 			if($.trim(videoName)==""){
 				alert("请输入名称");
 				return ;
@@ -140,6 +142,10 @@ textarea{
 			}
 			if($.trim(videoDescription)==""){
 				alert("请输入简介");
+				return ;
+			}
+			if(videoIndex==null){
+				alert("请添加封面文件");
 				return ;
 			}
 			document.getElementById("createVideo").submit();
