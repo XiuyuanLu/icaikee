@@ -33,6 +33,9 @@ public class CartoonService {
 	public String saveCartoonInfo(String chapterId, String cartoonName, String author, String description,
 			MultipartFile img, MultipartFile index) {
 
+		CartoonInfo ci = getSingleCartoonByChapterId(chapterId);
+		if (ci != null)
+			return WebConstants.FAILURE;
 		try {
 			if (ImageIO.read(img.getInputStream()) == null || ImageIO.read(index.getInputStream()) == null) {
 				logger.info("not img");
@@ -118,7 +121,8 @@ public class CartoonService {
 
 	@Transactional
 	public String deleteSingleCartoonByChapterId(String chapterId) {
-		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.chapterId=?", chapterId);
+		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.cartoonChapterId=?",
+				chapterId);
 		if (x != null)
 			dao.delete(x);
 		return WebConstants.SUCCESS;
