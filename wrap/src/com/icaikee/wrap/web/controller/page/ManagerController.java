@@ -62,7 +62,9 @@ public class ManagerController {
 
 	@RequestMapping("/video")
 	public ModelAndView videoPage() {
-		return new ModelAndView(VIDEO_MANAGE_PAGE);
+		ModelAndView mv = new ModelAndView(VIDEO_MANAGE_PAGE);
+		mv.addObject("videos", videoService.getVideos());
+		return mv;
 	}
 
 	@RequestMapping("/software")
@@ -80,9 +82,11 @@ public class ManagerController {
 	}
 
 	@RequestMapping(value = "/video/upload", method = RequestMethod.POST)
-	public ModelAndView videoUpload(HttpServletRequest request, @RequestParam(name = "video") MultipartFile video) {
-		videoService.upload(video);
-		return new ModelAndView(VIDEO_MANAGE_PAGE);
+	public ModelAndView videoUpload(@RequestParam(name = "videoName") String videoName,
+			@RequestParam(name = "videoAuthor") String videoAuthor, @RequestParam(name = "videoUrl") String videoUrl,
+			@RequestParam(name = "videoDescription") String videoDescription) {
+		videoService.upload(videoName, videoAuthor, videoUrl, videoDescription);
+		return new ModelAndView(SUCCESS_MANAGE_PAGE);
 	}
 
 	@RequestMapping(value = "/software/instruction/upload", method = RequestMethod.POST)

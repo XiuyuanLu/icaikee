@@ -48,14 +48,13 @@ public class CartoonService {
 		String indexAddrRead = addressConfig.getIndexReadAddress();
 
 		CartoonInfo cartoon = new CartoonInfo();
-		cartoon.setDate(new Date());
-		cartoon.setName(cartoonName);
-		cartoon.setChapterId(chapterId);
-		cartoon.setAuthor(author);
-		cartoon.setDescription(description);
+		cartoon.setCartoonUpdateTime(new Date());
+		cartoon.setCartoonName(cartoonName);
+		cartoon.setCartoonChapterId(chapterId);
+		cartoon.setCartoonAuthor(author);
+		cartoon.setCartoonDescription(description);
 
 		String fileName = img.getOriginalFilename();
-		String suffix = fileName.substring(fileName.lastIndexOf(".") + 1);
 
 		String indexFileName = index.getOriginalFilename();
 
@@ -68,9 +67,8 @@ public class CartoonService {
 		String indexUrl = indexAddrRead + "i-" + chapterId + "-" + cartoonName + "."
 				+ fileName.substring(indexFileName.lastIndexOf(".") + 1);
 
-		cartoon.setUrl(url);
-		cartoon.setSuffix(suffix);
-		cartoon.setIndexUrl(indexUrl);
+		cartoon.setCartoonUrl(url);
+		cartoon.setCartoonIndexUrl(indexUrl);
 		try {
 			img.transferTo(new File(filePath));
 			index.transferTo(new File(indexFilePath));
@@ -91,21 +89,29 @@ public class CartoonService {
 	}
 
 	public CartoonInfo getSingleCartoonByChapterId(String chapterId) {
-		return dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.chapterId=?", chapterId);
+		return dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.cartoonChapterId=?", chapterId);
 
 	}
 
 	@Transactional
 	public String updateSingleCartoonByChapterId(String origChapterId, String chapterId, String cartoonName,
 			String author, String description) {
-		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.chapterId=?",
+		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.cartoonChapterId=?",
 				origChapterId);
 		if (x != null) {
-			x.setChapterId(chapterId);
-			x.setName(cartoonName);
-			x.setAuthor(author);
-			x.setDescription(description);
-			dao.update(x);
+			if (!origChapterId.equals(chapterId)) {
+				String url = x.getCartoonUrl();
+				String indexUrl = x.getCartoonIndexUrl();
+				dao.delete(x);
+				x = new CartoonInfo();
+				x.setCartoonUrl(url);
+				x.setCartoonIndexUrl(indexUrl);
+			}
+			x.setCartoonChapterId(chapterId);
+			x.setCartoonName(cartoonName);
+			x.setCartoonAuthor(author);
+			x.setCartoonDescription(description);
+			dao.save(x);
 		}
 		return WebConstants.SUCCESS;
 	}

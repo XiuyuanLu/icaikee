@@ -62,11 +62,11 @@ body{
 .head .menu .sub-menu a{
 	color: #ffffff;
 	font-size: 20px;
-	padding: 30px 50px;
+	padding: 30px 60px;
 }
 
 .head .menu .sub-menu a:hover{
-	background-color: #928d8d;
+	text-decoration: underline;
 }
 
 .head-package{

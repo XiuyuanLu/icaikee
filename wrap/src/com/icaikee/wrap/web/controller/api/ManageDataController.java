@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.icaikee.wrap.biz.cartoon.CartoonService;
 import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
 import com.icaikee.wrap.biz.user.LoginService;
+import com.icaikee.wrap.biz.video.VideoService;
+import com.icaikee.wrap.biz.video.model.Video;
 import com.icaikee.wrap.common.Message;
 import com.icaikee.wrap.web.controller.WebConstants;
 
@@ -22,6 +24,9 @@ public class ManageDataController {
 
 	@Autowired
 	private CartoonService cartoonService;
+
+	@Autowired
+	VideoService videoService;
 
 	@Autowired
 	LoginService loginService;
@@ -53,6 +58,25 @@ public class ManageDataController {
 	@RequestMapping("/cartoon/delete")
 	public Message deleteSingleCartoonInfo(@RequestParam(name = "chapterId") String chapterId) {
 		return Message.createSuccessMessage(cartoonService.deleteSingleCartoonByChapterId(chapterId));
+	}
+
+	@RequestMapping("/video/query")
+	public Video getSingleVideoInfo(@RequestParam(name = "videoName") String videoName) {
+		return videoService.getVideo(videoName);
+	}
+
+	@RequestMapping("/video/update")
+	public Message updateSingleVideoInfo(@RequestParam(name = "origVideoName") String origVideoName,
+			@RequestParam(name = "videoName") String videoName, @RequestParam(name = "videoAuthor") String videoAuthor,
+			@RequestParam(name = "videoUrl") String videoUrl,
+			@RequestParam(name = "videoDescription") String videoDescription) {
+		return Message.createSuccessMessage(videoService.updateSingleVideoByName(origVideoName, videoName, videoAuthor,
+				videoUrl, videoDescription));
+	}
+
+	@RequestMapping("/video/delete")
+	public Message deleteSingleVideoInfo(@RequestParam(name = "videoName") String videoName) {
+		return Message.createSuccessMessage(videoService.deleteSingleVideoByName(videoName));
 	}
 
 }

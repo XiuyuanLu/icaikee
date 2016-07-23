@@ -43,10 +43,10 @@ public class TeachingController {
 		logger.info("chapter id: " + chapterId);
 		logger.info("cartoon object: " + cartoon);
 		mv.addObject("chapterId", chapterId);
-		mv.addObject("cartoonName", cartoon.getName());
-		mv.addObject("url", cartoon.getUrl());
-		mv.addObject("author", cartoon.getAuthor());
-		mv.addObject("description", cartoon.getDescription());
+		mv.addObject("cartoonName", cartoon.getCartoonName());
+		mv.addObject("url", cartoon.getCartoonUrl());
+		mv.addObject("author", cartoon.getCartoonAuthor());
+		mv.addObject("description", cartoon.getCartoonDescription());
 		return mv;
 	}
 

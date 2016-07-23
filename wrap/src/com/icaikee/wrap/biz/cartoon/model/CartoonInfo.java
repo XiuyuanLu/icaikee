@@ -13,105 +13,105 @@ import javax.persistence.Table;
 @Table(name = "WRAP_CARTOON_INFO")
 public class CartoonInfo {
 
-	@Column(name = "ID_")
+	@Column(name = "CARTOON_ID")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int cartoonId;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@Column(name = "CARTOON_CHAPTER_ID")
+	private String cartoonChapterId;
 
-	@Column(name = "THE_DATE")
-	private Date date;
+	@Column(name = "CARTOON_NAME")
+	private String cartoonName;
 
-	@Column(name = "NAME")
-	private String name;
+	@Column(name = "CARTOON_URL")
+	private String cartoonUrl;
 
-	@Column(name = "URL")
-	private String url;
+	@Column(name = "CARTOON_AUTHOR")
+	private String cartoonAuthor;
 
-	@Column(name = "CHAPTER_ID")
-	private String chapterId;
+	@Column(name = "CARTOON_INDEX_URL")
+	private String cartoonIndexUrl;
 
-	@Column(name = "AUTHOR")
-	private String author;
+	@Column(name = "CARTOON_DESCRIPTION")
+	private String cartoonDescription;
 
-	@Column(name = "SUFFIX")
-	private String suffix;
+	@Column(name = "CARTOON_UPLOAD_TIME")
+	private Date cartoonUpdateTime;
 
-	@Column(name = "index_Url")
-	private String indexUrl;
+	@Column(name = "CARTOON_ACCESS_TIME")
+	private int cartoonAccessTime;
 
-	@Column(name = "description")
-	private String description;
-
-	public int getId() {
-		return id;
+	public int getCartoonId() {
+		return cartoonId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCartoonId(int cartoonId) {
+		this.cartoonId = cartoonId;
 	}
 
-	public Date getDate() {
-		return date;
+	public String getCartoonChapterId() {
+		return cartoonChapterId;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCartoonChapterId(String cartoonChapterId) {
+		this.cartoonChapterId = cartoonChapterId;
 	}
 
-	public String getName() {
-		return name;
+	public String getCartoonName() {
+		return cartoonName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setCartoonName(String cartoonName) {
+		this.cartoonName = cartoonName;
 	}
 
-	public String getUrl() {
-		return url;
+	public String getCartoonUrl() {
+		return cartoonUrl;
 	}
 
-	public void setUrl(String url) {
-		this.url = url;
+	public void setCartoonUrl(String cartoonUrl) {
+		this.cartoonUrl = cartoonUrl;
 	}
 
-	public String getChapterId() {
-		return chapterId;
+	public String getCartoonAuthor() {
+		return cartoonAuthor;
 	}
 
-	public void setChapterId(String chapterId) {
-		this.chapterId = chapterId;
+	public void setCartoonAuthor(String cartoonAuthor) {
+		this.cartoonAuthor = cartoonAuthor;
 	}
 
-	public String getAuthor() {
-		return author;
+	public String getCartoonIndexUrl() {
+		return cartoonIndexUrl;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setCartoonIndexUrl(String cartoonIndexUrl) {
+		this.cartoonIndexUrl = cartoonIndexUrl;
 	}
 
-	public String getSuffix() {
-		return suffix;
+	public String getCartoonDescription() {
+		return cartoonDescription;
 	}
 
-	public void setSuffix(String suffix) {
-		this.suffix = suffix;
+	public void setCartoonDescription(String cartoonDescription) {
+		this.cartoonDescription = cartoonDescription;
 	}
 
-	public String getIndexUrl() {
-		return indexUrl;
+	public Date getCartoonUpdateTime() {
+		return cartoonUpdateTime;
 	}
 
-	public void setIndexUrl(String indexUrl) {
-		this.indexUrl = indexUrl;
+	public void setCartoonUpdateTime(Date cartoonUpdateTime) {
+		this.cartoonUpdateTime = cartoonUpdateTime;
 	}
 
-	public String getDescription() {
-		return description;
+	public int getCartoonAccessTime() {
+		return cartoonAccessTime;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCartoonAccessTime(int cartoonAccessTime) {
+		this.cartoonAccessTime = cartoonAccessTime;
 	}
 
 }

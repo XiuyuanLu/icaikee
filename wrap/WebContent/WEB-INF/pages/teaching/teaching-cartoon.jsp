@@ -64,11 +64,11 @@
 			<c:forEach var="item" items="${cartoons}">
 				<div class="item">
 					<div class="item-img">
-						<img src="${item.indexUrl}" />
+						<img src="${item.cartoonIndexUrl}" />
 					</div>
-					<a href="page/teaching/cartoon/img?chapterId=${item.chapterId}&cartoonName=${item.name}&url=${item.url}">${item.chapterId}:${item.name}</a>
-					<br/><span>作者：${item.author }&nbsp;|&nbsp;浏览次数：122</span>
-					<br/><span id="description" title="${item.description }">简介：${item.description }</span>
+					<a href="page/teaching/cartoon/img?chapterId=${item.cartoonChapterId}&cartoonName=${item.cartoonName}&url=${item.cartoonUrl}">${item.cartoonChapterId}:${item.cartoonName}</a>
+					<br/><span>作者：${item.cartoonAuthor }&nbsp;|&nbsp;浏览次数：122</span>
+					<br/><span id="description" title="${item.cartoonDescription }">简介：${item.cartoonDescription }</span>
 				</div>
 			</c:forEach> 
 		</div>

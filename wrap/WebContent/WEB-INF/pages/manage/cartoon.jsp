@@ -105,7 +105,7 @@ textarea{
 				<span class="title-span">维护</span>
 				<c:forEach var="item" items="${cartoons}">
 					<div class="item">
-						<a href="javascript:void(0)" onclick="query('${item.chapterId}')" >${item.chapterId}</a>
+						<a href="javascript:void(0)" onclick="query('${item.cartoonChapterId}')" >${item.cartoonChapterId}</a>
 					</div>
 				</c:forEach>
 			</div>
@@ -170,12 +170,12 @@ textarea{
 				alert("no data");
 				return ;
 			}
-			document.getElementById("selectedChapter").value=data.chapterId;;
+			document.getElementById("selectedChapter").value=data.cartoonChapterId;;
 			document.getElementById("maintain").style.display="block";
-			document.getElementById("chapterIdForUpdate").value=data.chapterId;
-			document.getElementById("cartoonNameForUpdate").value=data.name;
-			document.getElementById("authorForUpdate").value=data.author;
-			document.getElementById("descriptionForUpdate").value=data.description;
+			document.getElementById("chapterIdForUpdate").value=data.cartoonChapterId;
+			document.getElementById("cartoonNameForUpdate").value=data.cartoonName;
+			document.getElementById("authorForUpdate").value=data.cartoonAuthor;
+			document.getElementById("descriptionForUpdate").value=data.cartoonDescription;
 		}
 		
 		function update(){
@@ -192,6 +192,7 @@ textarea{
 				dataType: 'json',
 				success:function(msg){
 					alert("更新成功");
+					location.href="page/manage/cartoon";
 				}
 			});		
 		}
