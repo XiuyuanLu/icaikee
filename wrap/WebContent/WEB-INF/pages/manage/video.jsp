@@ -121,6 +121,7 @@ textarea{
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
 	<input id="selectedVideo" type="hidden"/>
+	<input id="videoNames" type="hidden" value="${videoNames}"/>
 	<script>
 		function lxySubmit(){
 			var videoName=document.getElementById("videoName").value;
@@ -144,9 +145,20 @@ textarea{
 				alert("请输入简介");
 				return ;
 			}
-			if(videoIndex==null){
+			if($.trim(videoIndex)==""){
 				alert("请添加封面文件");
 				return ;
+			}
+			var videoNames = document.getElementById("videoNames").value;
+			if(videoNames!=""){
+				videoNames=videoNames.substring(1,videoNames.length-1);
+				var array = videoNames.split(", ");
+				for(var i=0;i<array.length;i++){
+					if(videoName==array[i]){
+						alert("视频名称已存在");
+						return ;
+					}
+				}
 			}
 			document.getElementById("createVideo").submit();
 		}

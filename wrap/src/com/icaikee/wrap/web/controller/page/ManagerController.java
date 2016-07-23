@@ -1,5 +1,8 @@
 package com.icaikee.wrap.web.controller.page;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
@@ -12,8 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icaikee.wrap.biz.cartoon.CartoonService;
+import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
 import com.icaikee.wrap.biz.software.SoftwareService;
 import com.icaikee.wrap.biz.video.VideoService;
+import com.icaikee.wrap.biz.video.model.Video;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -51,7 +56,12 @@ public class ManagerController {
 	@RequestMapping("/cartoon")
 	public ModelAndView cartoonPage() {
 		ModelAndView mv = new ModelAndView(CARTOON_MANAGE_PAGE);
-		mv.addObject("cartoons", cartoonService.getCartoons());
+		List<CartoonInfo> cartoons = cartoonService.getCartoons();
+		mv.addObject("cartoons", cartoons);
+		List<String> cartoonChapters = new ArrayList<String>();
+		for (CartoonInfo x : cartoons)
+			cartoonChapters.add(x.getCartoonChapterId());
+		mv.addObject("cartoonChapters", cartoonChapters);
 		return mv;
 	}
 
@@ -63,7 +73,12 @@ public class ManagerController {
 	@RequestMapping("/video")
 	public ModelAndView videoPage() {
 		ModelAndView mv = new ModelAndView(VIDEO_MANAGE_PAGE);
-		mv.addObject("videos", videoService.getVideos());
+		List<Video> videos = videoService.getVideos();
+		mv.addObject("videos", videos);
+		List<String> videoNames = new ArrayList<String>();
+		for (Video x : videos)
+			videoNames.add(x.getVideoName());
+		mv.addObject("videoNames", videoNames);
 		return mv;
 	}
 

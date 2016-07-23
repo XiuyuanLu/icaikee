@@ -124,7 +124,7 @@ textarea{
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
 	<input id="selectedChapter" type="hidden"/>
-	
+	<input id="cartoonChapters" type="hidden" value="${cartoonChapters}"/>
 	<script>
 	
 		function lxySubmit(){
@@ -132,6 +132,8 @@ textarea{
 			var cartoonName=document.getElementById("cartoonName").value;
 			var author=document.getElementById("author").value;
 			var description=document.getElementById("description").value;
+			var cartoonFile = document.getElementById("cartoonFile").value;
+			var indexFile = document.getElementById("indexFile").value;
 			if($.trim(chapterId)==""){
 				alert("请输入章节");
 				return ;
@@ -147,6 +149,25 @@ textarea{
 			if($.trim(description)==""){
 				alert("请输入简介");
 				return ;
+			}
+			if($.trim(cartoonFile)==""){
+				alert("请添加漫画文件");
+				return ;
+			}
+			if($.trim(indexFile)==""){
+				alert("请添加封面文件");
+				return ;
+			}
+			var cartoonChapters = document.getElementById("cartoonChapters").value;
+			if(cartoonChapters!=""){
+				cartoonChapters=cartoonChapters.substring(1,cartoonChapters.length-1);
+				var array = cartoonChapters.split(", ");
+				for(var i=0;i<array.length;i++){
+					if(chapterId==array[i]){
+						alert("章节已存在");
+						return ;
+					}
+				}
 			}
 			document.getElementById("createCartoon").submit();
 		}
