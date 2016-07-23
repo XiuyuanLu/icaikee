@@ -36,9 +36,10 @@ public class ManageDataController {
 
 	@RequestMapping("/cartoon/update")
 	public String updateSingleCartoonInfo(@RequestParam(name = "origChapterId") String origChapterId,
-			@RequestParam(name = "chapterId") String chapterId,
-			@RequestParam(name = "cartoonName") String cartoonName) {
-		return cartoonService.updateSingleCartoonByChapterId(origChapterId, chapterId, cartoonName);
+			@RequestParam(name = "chapterId") String chapterId, @RequestParam(name = "cartoonName") String cartoonName,
+			@RequestParam(name = "author") String author, @RequestParam(name = "description") String description) {
+		return cartoonService.updateSingleCartoonByChapterId(origChapterId, chapterId, cartoonName, author,
+				description);
 	}
 
 	@RequestMapping("/cartoon/delete")

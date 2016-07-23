@@ -12,8 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icaikee.wrap.biz.cartoon.CartoonService;
-import com.icaikee.wrap.biz.cartoon.dto.CartoonInfoDto;
-import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
 import com.icaikee.wrap.biz.video.VideoService;
 import com.icaikee.wrap.web.controller.WebConstants;
 
@@ -28,6 +26,8 @@ public class ManagerController {
 	private final static String VIDEO_MANAGE_PAGE = "manage/video";
 
 	private final static String REVIEW_MANAGE_PAGE = "manage/review";
+
+	private final static String SUCCESS_MANAGE_PAGE = "manage/success";
 
 	Logger logger = Logger.getLogger(this.getClass());
 
@@ -50,11 +50,8 @@ public class ManagerController {
 
 	@RequestMapping("/cartoon")
 	public ModelAndView cartoonPage() {
-
 		ModelAndView mv = new ModelAndView(CARTOON_MANAGE_PAGE);
-
 		mv.addObject("cartoons", cartoonService.getCartoons());
-
 		return mv;
 	}
 
@@ -70,10 +67,11 @@ public class ManagerController {
 
 	@RequestMapping(value = "/cartoon/upload", method = RequestMethod.POST)
 	public ModelAndView cartoonUpload(HttpServletRequest request, @RequestParam(name = "chapterId") String chapterId,
-			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "img") MultipartFile img) {
-		CartoonInfoDto cartoon = new CartoonInfoDto(chapterId, cartoonName, CartoonInfo.LOCAL_IMG_PATH);
-		cartoonService.saveCartoonInfo(cartoon, img);
-		return new ModelAndView(CARTOON_MANAGE_PAGE);
+			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "author") String author,
+			@RequestParam(name = "description") String description, @RequestParam(name = "img") MultipartFile img,
+			@RequestParam(name = "index") MultipartFile index) {
+		cartoonService.saveCartoonInfo(chapterId, cartoonName, author, description, img, index);
+		return new ModelAndView(SUCCESS_MANAGE_PAGE);
 	}
 
 	@RequestMapping(value = "/video/upload", method = RequestMethod.POST)

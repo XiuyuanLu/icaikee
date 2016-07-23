@@ -87,17 +87,13 @@ textarea{
 	<div class="container">
 		<div class="info">
 			<span class="title-span">新增</span>
-			<form class="myForm" id="createCartoon" 
-			 		action="page/manage/cartoon/upload" method="post" 
-					enctype="multipart/form-data">
-			  <p>章&nbsp;节: <input type="text" id="chapterId" name="chapterId" /></p>
-			  <p>漫画名称: <input type="text" id="cartoonName" name="cartoonName" /></p>
-			  <p>作者名称: <input type="text" id="author" name="author" value="Gaga"/></p>
-			  <p>漫画简介: <br/><textarea cols="35" rows="5" id="description" name="description"></textarea></p>
-			  <p>漫画文件: <input type="file" id="cartoonFile" name="img" /></p>
-			  <p>封面文件: <input type="file" id="indexFile" name="index" /></p>
-			  <input type="button" value="上传" onclick="lxySubmit()"/>
+			<form class="myForm" action="page/manage/software/instruction/upload" method="post" 
+					enctype="multipart/form-data" target="_blank">
+			  <p>指标文案: <input type="file" name="img" /></p>
+			  <input type="submit" value="上传" />
 			</form>
+			<iframe name="pfForm_iframe" width="0" height="0" scrolling="no"> 
+			</iframe>
 		</div>
 		<br/>
 		<div class="info-m">
@@ -126,31 +122,6 @@ textarea{
 	<input id="selectedChapter" type="hidden"/>
 	
 	<script>
-	
-		function lxySubmit(){
-			var chapterId=document.getElementById("chapterId").value;
-			var cartoonName=document.getElementById("cartoonName").value;
-			var author=document.getElementById("author").value;
-			var description=document.getElementById("description").value;
-			if($.trim(chapterId)==""){
-				alert("请输入章节");
-				return ;
-			}
-			if($.trim(cartoonName)==""){
-				alert("请输入名称");
-				return ;
-			}
-			if($.trim(author)==""){
-				alert("请输入作者");
-				return ;
-			}
-			if($.trim(description)==""){
-				alert("请输入简介");
-				return ;
-			}
-			document.getElementById("createCartoon").submit();
-		}
-	
 		function query(chapterId){
 			$.ajax({
 				url:"api/cartoon/query",

@@ -20,6 +20,7 @@
 	display: block;
 	overflow: visible;
 	margin: 10px;
+	margin-bottom: 100px;
 	width:500px;
 }
 
@@ -68,6 +69,9 @@
 		function onLoad(){
 			showBar("1");
 			highlightItem("i1");
+			/* var height =$("#img").height();
+			if(height>10100)
+				$("#cartoon").css("height",height); */
 		}
 	</script>
 	

@@ -1,9 +1,11 @@
 package com.icaikee.wrap.web.controller.page;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.icaikee.wrap.biz.AddressConfig;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -14,9 +16,14 @@ public class SoftwareController {
 
 	private static final String SOFTWARE_DOWNLOADING_PAGE = "software/downloading";
 
+	@Autowired
+	AddressConfig addressConfig;
+
 	@RequestMapping("/instruction")
 	public ModelAndView instruction() {
-		return new ModelAndView(SOFTWARE_INSTRUCTION_PAGE);
+		ModelAndView mv = new ModelAndView(SOFTWARE_INSTRUCTION_PAGE);
+		mv.addObject("url", addressConfig.getSoftwareInstructionAddress());
+		return mv;
 	}
 
 	@RequestMapping("/downloading")
