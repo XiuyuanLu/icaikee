@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icaikee.wrap.biz.cartoon.CartoonService;
+import com.icaikee.wrap.biz.software.SoftwareService;
 import com.icaikee.wrap.biz.video.VideoService;
 import com.icaikee.wrap.web.controller.WebConstants;
 
@@ -27,6 +28,8 @@ public class ManagerController {
 
 	private final static String REVIEW_MANAGE_PAGE = "manage/review";
 
+	private final static String SOFTWARE_MANAGE_PAGE = "manage/software";
+
 	private final static String SUCCESS_MANAGE_PAGE = "manage/success";
 
 	Logger logger = Logger.getLogger(this.getClass());
@@ -36,6 +39,9 @@ public class ManagerController {
 
 	@Autowired
 	VideoService videoService;
+
+	@Autowired
+	SoftwareService softwareService;
 
 	@RequestMapping
 	public ModelAndView loginPage() {
@@ -65,6 +71,11 @@ public class ManagerController {
 		return new ModelAndView(VIDEO_MANAGE_PAGE);
 	}
 
+	@RequestMapping("/software")
+	public ModelAndView softwarePage() {
+		return new ModelAndView(SOFTWARE_MANAGE_PAGE);
+	}
+
 	@RequestMapping(value = "/cartoon/upload", method = RequestMethod.POST)
 	public ModelAndView cartoonUpload(HttpServletRequest request, @RequestParam(name = "chapterId") String chapterId,
 			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "author") String author,
@@ -78,6 +89,12 @@ public class ManagerController {
 	public ModelAndView videoUpload(HttpServletRequest request, @RequestParam(name = "video") MultipartFile video) {
 		videoService.upload(video);
 		return new ModelAndView(VIDEO_MANAGE_PAGE);
+	}
+
+	@RequestMapping(value = "/software/instruction/upload", method = RequestMethod.POST)
+	public ModelAndView instructionUpload(@RequestParam(name = "instruction") MultipartFile instruction) {
+		softwareService.uploadInstruction(instruction);
+		return new ModelAndView(SUCCESS_MANAGE_PAGE);
 	}
 
 }
