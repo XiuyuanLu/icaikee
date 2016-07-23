@@ -40,6 +40,8 @@ public class TeachingController {
 		logger.info("teaching cartoon IMG page");
 		ModelAndView mv = new ModelAndView(TEACHING_CARTOON_PAGE_IMG);
 		CartoonInfo cartoon = cartoonService.getSingleCartoonByChapterId(chapterId);
+		logger.info("chapter id: " + chapterId);
+		logger.info("cartoon object: " + cartoon);
 		mv.addObject("chapterId", chapterId);
 		mv.addObject("cartoonName", cartoon.getName());
 		mv.addObject("url", cartoon.getUrl());

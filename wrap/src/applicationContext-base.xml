@@ -45,6 +45,10 @@
 	    	<mvc:mapping path="/page/**" /> 
 	    	<bean class="com.icaikee.wrap.web.interceptor.BaseInterceptor" />  
 		</mvc:interceptor>  
+		<mvc:interceptor>  
+	    	<mvc:mapping path="/page/manage/**" /> 
+	    	<bean class="com.icaikee.wrap.web.interceptor.PermissionInterceptor" />  
+		</mvc:interceptor>  
  	</mvc:interceptors>
  	
  	<bean id="exceptionHandler" class="com.icaikee.wrap.exception.MyExceptionHandler"/>

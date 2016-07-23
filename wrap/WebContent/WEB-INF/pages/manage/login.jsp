@@ -65,7 +65,10 @@
 				type: 'POST',
 				dataType: 'json',
 				success:function(data){
-					jump();
+					if(data.message=="success")
+						jump();
+					else
+						alert("用户名或密码错误");
 				}
 			});
 		}
@@ -73,6 +76,13 @@
 		function jump(){
 			location.href="page/manage/cartoon";
 		}
+		
+		document.onkeydown=function(event){
+	        var e = event || window.event || arguments.callee.caller.arguments[0];
+	        if(e && e.keyCode==13){
+	        	 login();
+	        }
+	    }; 
 		
 	</script>
 	

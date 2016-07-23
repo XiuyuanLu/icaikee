@@ -43,15 +43,9 @@ public class ManagerController {
 	@Autowired
 	SoftwareService softwareService;
 
-	@RequestMapping
+	@RequestMapping("/login")
 	public ModelAndView loginPage() {
 		return new ModelAndView(LOGIN_PAGE);
-	}
-
-	@RequestMapping("/login")
-	public ModelAndView login(@RequestParam(name = "username") String username,
-			@RequestParam(name = "password") String password) {
-		return new ModelAndView(CARTOON_MANAGE_PAGE);
 	}
 
 	@RequestMapping("/cartoon")

@@ -13,10 +13,6 @@ import javax.persistence.Table;
 @Table(name = "WRAP_CARTOON_INFO")
 public class CartoonInfo {
 
-	public static final String LOCAL_IMG_PATH = "/home/opadmin/imgrepo/";
-	// public static final String LOCAL_IMG_PATH =
-	// "E:\\programme\\imgrepository\\";
-
 	@Column(name = "ID_")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
