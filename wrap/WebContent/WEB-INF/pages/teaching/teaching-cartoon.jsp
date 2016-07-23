@@ -53,8 +53,8 @@
 			<div id="cartoon-title" class="cartoon-title">
 				<h3>${chapterId}:${cartoonName}</h3>
 				<div class="img-info">
-					<span>作者：${author }&nbsp;|&nbsp;浏览次数：122</span>
-					<br/><span id="description" title="${description }">简介：${description }</span>
+					<span>作者：${author }&nbsp;|&nbsp;浏览次数：${accessTime}</span>
+					<br/><span id="description" title="${description }">简介：${description}</span>
 				</div>
 			</div>
 			<br/>

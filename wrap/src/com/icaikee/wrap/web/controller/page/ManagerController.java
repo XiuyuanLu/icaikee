@@ -96,12 +96,33 @@ public class ManagerController {
 		return new ModelAndView(SUCCESS_MANAGE_PAGE);
 	}
 
+	@RequestMapping(value = "/cartoon/img-update", method = RequestMethod.POST)
+	public ModelAndView imgUpdate(@RequestParam(name = "chapterId") String chapterId,
+			@RequestParam(name = "img") MultipartFile img) {
+		cartoonService.updateImg(chapterId, img);
+		return new ModelAndView(SUCCESS_MANAGE_PAGE);
+	}
+
+	@RequestMapping(value = "/cartoon/index-update", method = RequestMethod.POST)
+	public ModelAndView indexUpdate(@RequestParam(name = "chapterId") String chapterId,
+			@RequestParam(name = "index") MultipartFile index) {
+		cartoonService.updateIndex(chapterId, index);
+		return new ModelAndView(SUCCESS_MANAGE_PAGE);
+	}
+
 	@RequestMapping(value = "/video/upload", method = RequestMethod.POST)
 	public ModelAndView videoUpload(@RequestParam(name = "videoName") String videoName,
 			@RequestParam(name = "videoAuthor") String videoAuthor, @RequestParam(name = "videoUrl") String videoUrl,
 			@RequestParam(name = "videoDescription") String videoDescription,
 			@RequestParam(name = "indexFile") MultipartFile indexFile) {
 		videoService.upload(videoName, videoAuthor, videoUrl, videoDescription, indexFile);
+		return new ModelAndView(SUCCESS_MANAGE_PAGE);
+	}
+
+	@RequestMapping(value = "/video/index-update", method = RequestMethod.POST)
+	public ModelAndView videoIndexUpdate(@RequestParam(name = "videoName") String videoName,
+			@RequestParam(name = "index") MultipartFile index) {
+		videoService.updateIndex(videoName, index);
 		return new ModelAndView(SUCCESS_MANAGE_PAGE);
 	}
 

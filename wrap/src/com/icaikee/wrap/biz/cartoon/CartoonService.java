@@ -66,9 +66,9 @@ public class CartoonService {
 		String url = addrRead + chapterId + "-" + cartoonName + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
 
 		String indexFilePath = indexAddrSave + "i-" + chapterId + "-" + cartoonName + "."
-				+ fileName.substring(indexFileName.lastIndexOf(".") + 1);
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
 		String indexUrl = indexAddrRead + "i-" + chapterId + "-" + cartoonName + "."
-				+ fileName.substring(indexFileName.lastIndexOf(".") + 1);
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
 
 		cartoon.setCartoonUrl(url);
 		cartoon.setCartoonIndexUrl(indexUrl);
@@ -125,6 +125,84 @@ public class CartoonService {
 				chapterId);
 		if (x != null)
 			dao.delete(x);
+		return WebConstants.SUCCESS;
+	}
+
+	@Transactional
+	public String updateImg(String chapterId, MultipartFile img) {
+
+		try {
+			if (ImageIO.read(img.getInputStream()) == null) {
+				logger.info("not img");
+				return "not img";
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		CartoonInfo ci = getSingleCartoonByChapterId(chapterId);
+
+		String addrSave = addressConfig.getSaveAddress();
+		String addrRead = addressConfig.getReadAddress();
+
+		String fileName = img.getOriginalFilename();
+
+		String filePath = addrSave + chapterId + "-" + ci.getCartoonName() + "."
+				+ fileName.substring(fileName.lastIndexOf(".") + 1);
+		String url = addrRead + chapterId + "-" + ci.getCartoonName() + "."
+				+ fileName.substring(fileName.lastIndexOf(".") + 1);
+
+		ci.setCartoonUrl(url);
+		try {
+			img.transferTo(new File(filePath));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		}
+
+		dao.save(ci);
+
+		return WebConstants.SUCCESS;
+	}
+
+	@Transactional
+	public String updateIndex(String chapterId, MultipartFile index) {
+
+		try {
+			if (ImageIO.read(index.getInputStream()) == null) {
+				logger.info("not img");
+				return "not img";
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		CartoonInfo ci = getSingleCartoonByChapterId(chapterId);
+
+		String indexAddrSave = addressConfig.getIndexSaveAddress();
+		String indexAddrRead = addressConfig.getIndexReadAddress();
+
+		String indexFileName = index.getOriginalFilename();
+
+		String indexFilePath = indexAddrSave + "i-" + chapterId + "-" + ci.getCartoonName() + "."
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+		String indexUrl = indexAddrRead + "i-" + chapterId + "-" + ci.getCartoonName() + "."
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+
+		ci.setCartoonIndexUrl(indexUrl);
+		try {
+			index.transferTo(new File(indexFilePath));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		}
+
+		dao.save(ci);
+
 		return WebConstants.SUCCESS;
 	}
 

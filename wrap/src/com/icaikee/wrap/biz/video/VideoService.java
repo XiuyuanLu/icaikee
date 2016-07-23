@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.imageio.ImageIO;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -95,6 +97,45 @@ public class VideoService {
 		if (video != null) {
 			dao.delete(video);
 		}
+		return WebConstants.SUCCESS;
+	}
+
+	@Transactional
+	public String updateIndex(String videoName, MultipartFile index) {
+
+		try {
+			if (ImageIO.read(index.getInputStream()) == null) {
+				logger.info("not img");
+				return "not img";
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		Video video = getVideo(videoName);
+
+		String indexAddrSave = addressConfig.getIndexSaveAddress();
+		String indexAddrRead = addressConfig.getIndexReadAddress();
+
+		String indexFileName = index.getOriginalFilename();
+
+		String indexFilePath = indexAddrSave + "i-" + videoName + "."
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+		String indexUrl = indexAddrRead + "i-" + videoName + "."
+				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+
+		video.setVideoIndexUrl(indexUrl);
+		try {
+			index.transferTo(new File(indexFilePath));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		}
+
+		dao.save(video);
+
 		return WebConstants.SUCCESS;
 	}
 

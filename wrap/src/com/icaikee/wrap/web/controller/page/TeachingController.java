@@ -53,6 +53,7 @@ public class TeachingController {
 		mv.addObject("url", cartoon.getCartoonUrl());
 		mv.addObject("author", cartoon.getCartoonAuthor());
 		mv.addObject("description", cartoon.getCartoonDescription());
+		mv.addObject("accessTime", cartoon.getCartoonAccessTime());
 		return mv;
 	}
 

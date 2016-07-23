@@ -114,6 +114,13 @@ textarea{
 					<p>简介修改: <br/><textarea id="videoDescriptionForUpdate" cols="35" rows="5" name="videoDescription"></textarea></p>
 					<p><a href="javascript:void(0)" onclick="update()">保存</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					   <a href="javascript:void(0)" onclick="del()">删除视频</a></p>
+					<form class="myForm" id="updateIndex"
+					 		action="page/manage/video/index-update" method="post" 
+							enctype="multipart/form-data">
+					  <p>修改封面文件: <input type="file" id="indexFileForUpdate" name="index" /></p>
+					  <input type="hidden" id="hiddenVideoName" name="videoName" />
+					  <input type="button" value="上传" onclick="lxyIndexSubmit()"/>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -222,6 +229,16 @@ textarea{
 					location.href="page/manage/video";
 				}
 			});		
+		}
+		
+		function lxyIndexSubmit(){
+			document.getElementById("hiddenVideoName").value=document.getElementById("selectedVideo").value;
+			var indexFile = document.getElementById("indexFileForUpdate").value;
+			if($.trim(indexFile)==""){
+				alert("请添加封面文件");
+				return ;
+			}
+			document.getElementById("updateIndex").submit();
 		}
 	</script>
 	

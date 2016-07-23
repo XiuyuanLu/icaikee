@@ -15,7 +15,7 @@
 
 .container .info {
 	width:300px;
-	height: 500px;
+	height: 600px;
 	border: 1px solid;
 	border-color: #e6e0e0;
 	box-shadow: 0 2px 2px #928d8d;
@@ -61,7 +61,7 @@ a:hover{
 	top: 0;
 	left : 320px;
 	border: 1px solid #abaaaa;
-	height: 500px;
+	height: 600px;
 	width: 500px;
 	display: none;
 	box-shadow: 0 2px 2px #928d8d;
@@ -117,6 +117,20 @@ textarea{
 					<p>简介修改: <br/><textarea id="descriptionForUpdate" cols="35" rows="5" name="description"></textarea></p>
 					<p><a href="javascript:void(0)" onclick="update()">保存</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					   <a href="javascript:void(0)" onclick="del()">删除章节</a></p>
+					<form class="myForm" id="updateImg"
+					 		action="page/manage/cartoon/img-update" method="post" 
+							enctype="multipart/form-data">
+					  <p>修改漫画文件: <input type="file" id="cartoonFileForUpdate" name="img" /></p>
+					  <input type="hidden" id="imgChapterId" name="chapterId" />
+					  <input type="button" value="上传" onclick="lxyImgSubmit()"/>
+					</form>
+					<form class="myForm" id="updateIndex"
+					 		action="page/manage/cartoon/index-update" method="post" 
+							enctype="multipart/form-data">
+					  <p>修改封面文件: <input type="file" id="indexFileForUpdate" name="index" /></p>
+					  <input type="hidden" id="indexChapterId" name="chapterId" />
+					  <input type="button" value="上传" onclick="lxyIndexSubmit()"/>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -172,6 +186,26 @@ textarea{
 			document.getElementById("createCartoon").submit();
 		}
 	
+		function lxyImgSubmit(){
+			document.getElementById("imgChapterId").value=document.getElementById("selectedChapter").value;
+			var cartoonFile = document.getElementById("cartoonFileForUpdate").value;
+			if($.trim(cartoonFile)==""){
+				alert("请添加漫画文件");
+				return ;
+			}
+			document.getElementById("updateImg").submit();
+		}
+		
+		function lxyIndexSubmit(){
+			document.getElementById("indexChapterId").value=document.getElementById("selectedChapter").value;
+			var indexFile = document.getElementById("indexFileForUpdate").value;
+			if($.trim(indexFile)==""){
+				alert("请添加封面文件");
+				return ;
+			}
+			document.getElementById("updateIndex").submit();
+		}
+		
 		function query(chapterId){
 			$.ajax({
 				url:"api/cartoon/query",
