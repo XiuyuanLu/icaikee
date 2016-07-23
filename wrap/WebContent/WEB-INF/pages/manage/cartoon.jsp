@@ -190,8 +190,8 @@ textarea{
 				},
 				type: 'POST',
 				dataType: 'json',
-				success:function(data){
-					alert(data);
+				success:function(msg){
+					alert("更新成功");
 				}
 			});		
 		}
@@ -205,7 +205,8 @@ textarea{
 				type: 'POST',
 				dataType: 'json',
 				success:function(data){
-					alert(data);
+					alert("删除成功");
+					location.href="page/manage/cartoon";
 				}
 			});		
 		}

@@ -1,8 +1,5 @@
 package com.icaikee.wrap.web.controller.api;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.icaikee.wrap.biz.cartoon.CartoonService;
 import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
+import com.icaikee.wrap.common.Message;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -22,11 +20,9 @@ public class ManageDataController {
 	private CartoonService cartoonService;
 
 	@RequestMapping("/authenticate/login")
-	public Map<String, String> login(@RequestParam(name = "username") String username,
+	public Message login(@RequestParam(name = "username") String username,
 			@RequestParam(name = "password") String password) {
-		Map<String, String> result = new HashMap<String, String>();
-		result.put("result", WebConstants.SUCCESS);
-		return result;
+		return Message.createSuccessMessage(WebConstants.SUCCESS);
 	}
 
 	@RequestMapping("/cartoon/query")
@@ -35,16 +31,16 @@ public class ManageDataController {
 	}
 
 	@RequestMapping("/cartoon/update")
-	public String updateSingleCartoonInfo(@RequestParam(name = "origChapterId") String origChapterId,
+	public Message updateSingleCartoonInfo(@RequestParam(name = "origChapterId") String origChapterId,
 			@RequestParam(name = "chapterId") String chapterId, @RequestParam(name = "cartoonName") String cartoonName,
 			@RequestParam(name = "author") String author, @RequestParam(name = "description") String description) {
-		return cartoonService.updateSingleCartoonByChapterId(origChapterId, chapterId, cartoonName, author,
-				description);
+		return Message.createSuccessMessage(cartoonService.updateSingleCartoonByChapterId(origChapterId, chapterId,
+				cartoonName, author, description));
 	}
 
 	@RequestMapping("/cartoon/delete")
-	public String deleteSingleCartoonInfo(@RequestParam(name = "chapterId") String chapterId) {
-		return cartoonService.deleteSingleCartoonByChapterId(chapterId);
+	public Message deleteSingleCartoonInfo(@RequestParam(name = "chapterId") String chapterId) {
+		return Message.createSuccessMessage(cartoonService.deleteSingleCartoonByChapterId(chapterId));
 	}
 
 }
