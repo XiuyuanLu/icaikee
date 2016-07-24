@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.icaikee.wrap.biz.cartoon.CartoonService;
-import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
-import com.icaikee.wrap.biz.video.VideoService;
-import com.icaikee.wrap.biz.video.model.Video;
+import com.icaikee.wrap.biz.teaching.TeachingCartoonService;
+import com.icaikee.wrap.biz.teaching.TeachingVideoService;
+import com.icaikee.wrap.biz.teaching.model.CartoonInfo;
+import com.icaikee.wrap.biz.teaching.model.Video;
 import com.icaikee.wrap.common.Message;
 import com.icaikee.wrap.web.controller.WebConstants;
 
@@ -19,10 +19,10 @@ import com.icaikee.wrap.web.controller.WebConstants;
 public class TeachingManagerDataController {
 
 	@Autowired
-	private CartoonService cartoonService;
+	private TeachingCartoonService cartoonService;
 
 	@Autowired
-	VideoService videoService;
+	TeachingVideoService videoService;
 
 	@RequestMapping("/cartoon/query")
 	public CartoonInfo getSingleCartoonInfo(@RequestParam(name = "chapterId") String chapterId) {

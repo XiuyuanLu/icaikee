@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.icaikee.wrap.biz.cartoon.CartoonService;
-import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
-import com.icaikee.wrap.biz.video.VideoService;
-import com.icaikee.wrap.biz.video.model.Video;
+import com.icaikee.wrap.biz.teaching.TeachingCartoonService;
+import com.icaikee.wrap.biz.teaching.TeachingVideoService;
+import com.icaikee.wrap.biz.teaching.model.CartoonInfo;
+import com.icaikee.wrap.biz.teaching.model.Video;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -31,10 +31,10 @@ public class TeachingManagerController {
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
-	CartoonService cartoonService;
+	TeachingCartoonService cartoonService;
 
 	@Autowired
-	VideoService videoService;
+	TeachingVideoService videoService;
 
 	@RequestMapping("/cartoon")
 	public ModelAndView cartoonPage() {

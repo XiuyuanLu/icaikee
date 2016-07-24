@@ -1,4 +1,4 @@
-package com.icaikee.wrap.biz.video;
+package com.icaikee.wrap.biz.review;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.icaikee.wrap.biz.AddressConfig;
-import com.icaikee.wrap.biz.video.model.Video;
+import com.icaikee.wrap.biz.review.model.ReviewVideo;
 import com.icaikee.wrap.db.hibernate.HibernateDao;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Service
-public class VideoService {
+public class ReviewVideoService {
 
 	Logger logger = Logger.getLogger(this.getClass());
 
@@ -33,19 +33,19 @@ public class VideoService {
 	public String upload(String videoName, String videoAuthor, String videoUrl, String videoDescription,
 			MultipartFile indexFile) {
 
-		Video video = getVideo(videoName);
+		ReviewVideo video = getVideo(videoName);
 		if (video != null)
 			return "视频名称已存在";
 
-		String indexAddrSave = addressConfig.getVideoIndexSaveAddress();
-		String indexAddrRead = addressConfig.getVideoIndexReadAddress();
+		String indexAddrSave = addressConfig.getRvideoIndexSaveAddress();
+		String indexAddrRead = addressConfig.getRvideoIndexReadAddress();
 		String indexFileName = indexFile.getOriginalFilename();
-		String indexFilePath = indexAddrSave + "i-" + videoName + "."
+		String indexFilePath = indexAddrSave + "ri-" + videoName + "."
 				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
-		String indexUrl = indexAddrRead + "i-" + videoName + "."
+		String indexUrl = indexAddrRead + "ri-" + videoName + "."
 				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
 
-		video = new Video();
+		video = new ReviewVideo();
 		video.setVideoName(videoName);
 		video.setVideoAuthor(videoAuthor);
 		video.setVideoUrl(videoUrl);
@@ -65,22 +65,22 @@ public class VideoService {
 		return WebConstants.SUCCESS;
 	}
 
-	public Video getVideo(String videoName) {
-		return dao.findUnique(Video.class, "select x from Video x where x.videoName=?", videoName);
+	public ReviewVideo getVideo(String videoName) {
+		return dao.findUnique(ReviewVideo.class, "select x from ReviewVideo x where x.videoName=?", videoName);
 	}
 
-	public List<Video> getVideos() {
-		return dao.find(Video.class, "select x from Video x");
+	public List<ReviewVideo> getVideos() {
+		return dao.find(ReviewVideo.class, "select x from ReviewVideo x");
 	}
 
 	@Transactional
-	public String updateSingleVideoByName(String origVideoName, String videoName, String videoAuthor, String videoUrl,
-			String videoDescription) {
-		Video video = getVideo(origVideoName);
+	public String updateSingleReviewVideoByName(String origVideoName, String videoName, String videoAuthor,
+			String videoUrl, String videoDescription) {
+		ReviewVideo video = getVideo(origVideoName);
 		if (video != null) {
 			if (!origVideoName.equals(videoName)) {
 				dao.delete(video);
-				video = new Video();
+				video = new ReviewVideo();
 			}
 			video.setVideoName(videoName);
 			video.setVideoAuthor(videoAuthor);
@@ -92,8 +92,8 @@ public class VideoService {
 	}
 
 	@Transactional
-	public String deleteSingleVideoByName(String videoName) {
-		Video video = getVideo(videoName);
+	public String deleteSingleReviewVideoByName(String videoName) {
+		ReviewVideo video = getVideo(videoName);
 		if (video != null) {
 			dao.delete(video);
 		}
@@ -111,16 +111,16 @@ public class VideoService {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		Video video = getVideo(videoName);
+		ReviewVideo video = getVideo(videoName);
 
-		String indexAddrSave = addressConfig.getIndexSaveAddress();
-		String indexAddrRead = addressConfig.getIndexReadAddress();
+		String indexAddrSave = addressConfig.getRvideoIndexSaveAddress();
+		String indexAddrRead = addressConfig.getRvideoIndexReadAddress();
 
 		String indexFileName = index.getOriginalFilename();
 
-		String indexFilePath = indexAddrSave + "i-" + videoName + "."
+		String indexFilePath = indexAddrSave + "ri-" + videoName + "."
 				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
-		String indexUrl = indexAddrRead + "i-" + videoName + "."
+		String indexUrl = indexAddrRead + "ri-" + videoName + "."
 				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
 
 		video.setVideoIndexUrl(indexUrl);

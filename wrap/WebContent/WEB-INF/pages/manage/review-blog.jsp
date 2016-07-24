@@ -15,9 +15,8 @@
 <style>
 
 .container .info {
-	position: absolute;
+	position: relative;
 	left: 100px;
-	top: 150px;
 	border: 1px solid;
 	border-color: #e6e0e0;
 	padding: 50px 100px;
@@ -38,8 +37,8 @@
 			 <textarea id="myTextarea"></textarea>
 			 <input type="button" value="发布文章"/>
 		</div>
-	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
+	</div>
 	
 	<script>
 		function onLoad(){

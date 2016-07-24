@@ -86,7 +86,7 @@ textarea{
 		<div class="info">
 			<span class="title-span">新增</span>
 			<form class="myForm" id="createVideo" 
-				action="page/manage/video/upload" method="post" 
+				action="page/manage/review/video/upload" method="post" 
 				enctype="multipart/form-data">
 			  <p>视频名称: <input type="text" id="videoName" name="videoName" /></p>
 			  <p>视频作者: <input type="text" id="videoAuthor" name="videoAuthor" /></p>
@@ -115,7 +115,7 @@ textarea{
 					<p><a href="javascript:void(0)" onclick="update()">保存</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					   <a href="javascript:void(0)" onclick="del()">删除视频</a></p>
 					<form class="myForm" id="updateIndex"
-					 		action="page/manage/video/index-update" method="post" 
+					 		action="page/manage/review/video/index-update" method="post" 
 							enctype="multipart/form-data">
 					  <p>修改封面文件: <input type="file" id="indexFileForUpdate" name="index" /></p>
 					  <input type="hidden" id="hiddenVideoName" name="videoName" />
@@ -172,7 +172,7 @@ textarea{
 		
 		function query(videoName){
 			$.ajax({
-				url:"api/video/query",
+				url:"api/review/video/query",
 				data:{
 					videoName:videoName
 				},
@@ -199,7 +199,7 @@ textarea{
 		
 		function update(){
 			$.ajax({
-				url:"api/video/update",
+				url:"api/review/video/update",
 				data:{
 					origVideoName:document.getElementById("selectedVideo").value,
 					videoName :document.getElementById("videoNameForUpdate").value,
@@ -211,14 +211,14 @@ textarea{
 				dataType: 'json',
 				success:function(msg){
 					alert("更新成功");
-					location.href="page/manage/video";
+					location.href="page/manage/review/video";
 				}
 			});		
 		}
 		
 		function del(){
 			$.ajax({
-				url:"api/video/delete",
+				url:"api/review/video/delete",
 				data:{
 					videoName : document.getElementById("selectedVideo").value
 				},
@@ -226,7 +226,7 @@ textarea{
 				dataType: 'json',
 				success:function(data){
 					alert("删除成功");
-					location.href="page/manage/video";
+					location.href="page/manage/review/video";
 				}
 			});		
 		}

@@ -1,4 +1,4 @@
-package com.icaikee.wrap.biz.video.model;
+package com.icaikee.wrap.biz.teaching.model;
 
 import java.util.Date;
 

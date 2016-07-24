@@ -1,4 +1,4 @@
-package com.icaikee.wrap.biz.cartoon;
+package com.icaikee.wrap.biz.teaching;
 
 import java.io.File;
 import java.io.IOException;
@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.icaikee.wrap.biz.AddressConfig;
-import com.icaikee.wrap.biz.cartoon.model.CartoonInfo;
+import com.icaikee.wrap.biz.teaching.model.CartoonInfo;
 import com.icaikee.wrap.db.hibernate.HibernateDao;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Service
-public class CartoonService {
+public class TeachingCartoonService {
 
 	Logger logger = Logger.getLogger(this.getClass());
 
