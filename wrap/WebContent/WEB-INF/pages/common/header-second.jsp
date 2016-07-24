@@ -31,8 +31,8 @@
 		
 		<div id="menu-second-2" class="menu-second" style="display:none">
 			<ul class="sub-menu">
-				<li class="sub-item"><a id="f1" href="javascript:void(0)">复盘<br/>博文</a></li>
-				<li class="sub-item"><a id="f1" href="javascript:void(0)">复盘教学<br/>视频</a></li>
+				<li class="sub-item"><a id="f1" href="javascript:void(0)" onclick="redirect('page/review/blog')">复盘<br/>博文</a></li>
+				<li class="sub-item"><a id="f2" href="javascript:void(0)" onclick="redirect('page/review/video')">复盘教学<br/>视频</a></li>
 			</ul>
 		</div>
 		

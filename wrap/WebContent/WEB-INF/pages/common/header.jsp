@@ -11,7 +11,7 @@
 		<ul class="sub-menu">
 			<li class="sub-item"><a href="javascript:void(0)">首页</a></li>
 			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/teaching/cartoon')">教学</a></li>
-			<li class="sub-item"><a href="javascript:void(0)">复盘</a></li>
+			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/review/video')">复盘</a></li>
 			<li class="sub-item"><a href="javascript:void(0)" onclick="redirect('page/software/instruction')">缠论指标</a></li>
 			<li class="sub-item"><a href="javascript:void(0)">联系我们</a></li>
 		</ul>
