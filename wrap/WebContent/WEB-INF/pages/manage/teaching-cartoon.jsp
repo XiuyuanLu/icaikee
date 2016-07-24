@@ -88,7 +88,7 @@ textarea{
 		<div class="info">
 			<span class="title-span">新增</span>
 			<form class="myForm" id="createCartoon" 
-			 		action="page/manage/cartoon/upload" method="post" 
+			 		action="page/manage/teaching/cartoon/upload" method="post" 
 					enctype="multipart/form-data">
 			  <p>章&nbsp;节: <input type="text" id="chapterId" name="chapterId" /></p>
 			  <p>漫画名称: <input type="text" id="cartoonName" name="cartoonName" /></p>
@@ -118,14 +118,14 @@ textarea{
 					<p><a href="javascript:void(0)" onclick="update()">保存</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					   <a href="javascript:void(0)" onclick="del()">删除章节</a></p>
 					<form class="myForm" id="updateImg"
-					 		action="page/manage/cartoon/img-update" method="post" 
+					 		action="page/manage/teaching/cartoon/img-update" method="post" 
 							enctype="multipart/form-data">
 					  <p>修改漫画文件: <input type="file" id="cartoonFileForUpdate" name="img" /></p>
 					  <input type="hidden" id="imgChapterId" name="chapterId" />
 					  <input type="button" value="上传" onclick="lxyImgSubmit()"/>
 					</form>
 					<form class="myForm" id="updateIndex"
-					 		action="page/manage/cartoon/index-update" method="post" 
+					 		action="page/manage/teaching/cartoon/index-update" method="post" 
 							enctype="multipart/form-data">
 					  <p>修改封面文件: <input type="file" id="indexFileForUpdate" name="index" /></p>
 					  <input type="hidden" id="indexChapterId" name="chapterId" />
@@ -208,7 +208,7 @@ textarea{
 		
 		function query(chapterId){
 			$.ajax({
-				url:"api/cartoon/query",
+				url:"api/teaching/cartoon/query",
 				data:{
 					chapterId:chapterId
 				},
@@ -235,7 +235,7 @@ textarea{
 		
 		function update(){
 			$.ajax({
-				url:"api/cartoon/update",
+				url:"api/teaching/cartoon/update",
 				data:{
 					origChapterId:document.getElementById("selectedChapter").value,
 					chapterId:document.getElementById("chapterIdForUpdate").value,
@@ -247,14 +247,14 @@ textarea{
 				dataType: 'json',
 				success:function(msg){
 					alert("更新成功");
-					location.href="page/manage/cartoon";
+					location.href="page/manage/teaching/cartoon";
 				}
 			});		
 		}
 		
 		function del(){
 			$.ajax({
-				url:"api/cartoon/delete",
+				url:"api/teaching/cartoon/delete",
 				data:{
 					chapterId:document.getElementById("selectedChapter").value
 				},
@@ -262,7 +262,7 @@ textarea{
 				dataType: 'json',
 				success:function(data){
 					alert("删除成功");
-					location.href="page/manage/cartoon";
+					location.href="page/manage/teaching/cartoon";
 				}
 			});		
 		}

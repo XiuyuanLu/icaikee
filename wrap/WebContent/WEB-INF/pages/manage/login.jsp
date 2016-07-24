@@ -74,7 +74,7 @@
 		}
 		
 		function jump(){
-			location.href="page/manage/cartoon";
+			location.href="page/manage/teaching/cartoon";
 		}
 		
 		document.onkeydown=function(event){

@@ -10,4 +10,5 @@ public class WebConstants {
 
 	public final static String FAILURE = "failure";
 
+	public final static String SUCCESS_MANAGE_PAGE = "manage/success";
 }

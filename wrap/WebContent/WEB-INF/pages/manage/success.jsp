@@ -28,7 +28,7 @@
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container" style="height: 500px">
 		<div class="goback">
-			上传成功，<a href="page/manage/cartoon">返回</a>
+			上传成功，<a href="page/manage/teaching/cartoon">返回</a>
 		</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
