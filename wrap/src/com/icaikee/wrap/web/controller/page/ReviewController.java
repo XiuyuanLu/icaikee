@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.icaikee.wrap.biz.review.ReviewBlogService;
 import com.icaikee.wrap.biz.review.ReviewVideoService;
+import com.icaikee.wrap.biz.review.model.ReviewBlog;
 import com.icaikee.wrap.biz.review.model.ReviewVideo;
 import com.icaikee.wrap.web.controller.WebConstants;
 
@@ -26,6 +28,27 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewVideoService reviewVideoService;
+
+	@Autowired
+	private ReviewBlogService reviewBlogService;
+
+	@RequestMapping("/blog")
+	public ModelAndView blogIndex() {
+		logger.info("blog index");
+		ModelAndView mv = new ModelAndView(REVIEW_BLOG_INDEX_PAGE);
+		List<ReviewBlog> blogs = reviewBlogService.getBlogs();
+		mv.addObject("blogs", blogs);
+		return mv;
+	}
+
+	@RequestMapping("/blog/blog")
+	public ModelAndView blog(@RequestParam(name = "title") String title) {
+		logger.info("blog");
+		ModelAndView mv = new ModelAndView(REVIEW_BLOG_PAGE);
+		ReviewBlog blog = reviewBlogService.getSingleBlogByTitle(title);
+		mv.addObject("blog", blog);
+		return mv;
+	}
 
 	@RequestMapping("/video")
 	public ModelAndView videoIndex() {

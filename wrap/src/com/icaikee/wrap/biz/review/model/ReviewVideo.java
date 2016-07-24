@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class ReviewVideo {
 
 	@Column(name = "VIDEO_ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int videoId;
 
 	@Id

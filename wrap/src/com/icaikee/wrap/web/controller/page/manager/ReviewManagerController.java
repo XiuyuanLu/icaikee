@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.icaikee.wrap.biz.review.ReviewBlogService;
 import com.icaikee.wrap.biz.review.ReviewVideoService;
 import com.icaikee.wrap.biz.review.model.ReviewVideo;
 import com.icaikee.wrap.web.controller.WebConstants;
@@ -26,9 +27,19 @@ public class ReviewManagerController {
 	@Autowired
 	private ReviewVideoService reviewVideoService;
 
+	@Autowired
+	private ReviewBlogService reviewBlogService;
+
 	@RequestMapping("/blog")
 	public ModelAndView reviewBlogPage() {
 		return new ModelAndView(REVIEW_BLOG_MANAGE_PAGE);
+	}
+
+	@RequestMapping(value = "/blog/cover", method = RequestMethod.POST)
+	public ModelAndView blogCoverUpload(@RequestParam(name = "title") String title,
+			@RequestParam(name = "indexFile") MultipartFile indexFile) {
+		reviewBlogService.uploadIndex(title, indexFile);
+		return new ModelAndView(WebConstants.SUCCESS_MANAGE_PAGE);
 	}
 
 	@RequestMapping("/video")

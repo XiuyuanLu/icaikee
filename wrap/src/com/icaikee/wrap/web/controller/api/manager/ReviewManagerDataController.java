@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.icaikee.wrap.biz.review.ReviewBlogService;
 import com.icaikee.wrap.biz.review.ReviewVideoService;
 import com.icaikee.wrap.biz.review.model.ReviewVideo;
 import com.icaikee.wrap.common.Message;
@@ -18,6 +19,9 @@ public class ReviewManagerDataController {
 
 	@Autowired
 	private ReviewVideoService reviewVideoService;
+
+	@Autowired
+	private ReviewBlogService reviewBlogService;
 
 	@RequestMapping("/video/query")
 	public ReviewVideo getSingleVideoInfo(@RequestParam(name = "videoName") String videoName) {
@@ -36,6 +40,12 @@ public class ReviewManagerDataController {
 	@RequestMapping("/video/delete")
 	public Message deleteSingleVideoInfo(@RequestParam(name = "videoName") String videoName) {
 		return Message.createSuccessMessage(reviewVideoService.deleteSingleReviewVideoByName(videoName));
+	}
+
+	@RequestMapping("/blog/publish")
+	public Message blogPublish(@RequestParam(name = "title") String title, @RequestParam(name = "author") String author,
+			@RequestParam(name = "content") String content) {
+		return Message.createSuccessMessage(reviewBlogService.publish(title, author, content));
 	}
 
 }

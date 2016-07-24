@@ -33,6 +33,12 @@ public class AddressConfig {
 	@Value("#{configProperties['imgrepo.rvideo.index.address.read']}")
 	private String rvideoIndexReadAddress;
 
+	@Value("#{configProperties['imgrepo.blog.index.address.save']}")
+	private String blogIndexSaveAddress;
+
+	@Value("#{configProperties['imgrepo.blog.index.address.read']}")
+	private String blogIndexReadAddress;
+
 	public String getSaveAddress() {
 		return saveAddress;
 	}
@@ -103,6 +109,22 @@ public class AddressConfig {
 
 	public void setRvideoIndexReadAddress(String rvideoIndexReadAddress) {
 		this.rvideoIndexReadAddress = rvideoIndexReadAddress;
+	}
+
+	public String getBlogIndexSaveAddress() {
+		return blogIndexSaveAddress;
+	}
+
+	public void setBlogIndexSaveAddress(String blogIndexSaveAddress) {
+		this.blogIndexSaveAddress = blogIndexSaveAddress;
+	}
+
+	public String getBlogIndexReadAddress() {
+		return blogIndexReadAddress;
+	}
+
+	public void setBlogIndexReadAddress(String blogIndexReadAddress) {
+		this.blogIndexReadAddress = blogIndexReadAddress;
 	}
 
 }
