@@ -30,6 +30,7 @@
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container">
 		<div class="content-box">
+			<a href="${url}">下载</a>
 		</div>
 	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>

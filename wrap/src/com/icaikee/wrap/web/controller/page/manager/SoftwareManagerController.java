@@ -30,4 +30,10 @@ public class SoftwareManagerController {
 		softwareService.uploadInstruction(instruction);
 		return new ModelAndView(WebConstants.SUCCESS_MANAGE_PAGE);
 	}
+
+	@RequestMapping(value = "/software/upload", method = RequestMethod.POST)
+	public ModelAndView softwareUpload(@RequestParam(name = "software") MultipartFile software) {
+		softwareService.uploadSoftware(software);
+		return new ModelAndView(WebConstants.SUCCESS_MANAGE_PAGE);
+	}
 }

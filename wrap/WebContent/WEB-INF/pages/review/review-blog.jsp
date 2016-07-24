@@ -50,7 +50,7 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
-	<div class="container" style="min-height:800px">
+	<div class="container" style="min-height:800px;">
 		<div id="blog" class="blog">
 			<div id="blog-title" class="blog-title">
 				<h3>${blog.blogTitle}</h3>
@@ -60,7 +60,7 @@
 			</div>
 			<br/>
 			<div id="blog-content" class="blog-content">
-				<article>
+				<article id="article">
 					${blog.blogContent}
 				</article>
 			</div>
@@ -72,6 +72,8 @@
 		function onLoad(){
 			showBar("2");
 			highlightItem("f1");
+			$('.container').css('height',$('#article').height()+300);
+			$('#blog').css('height',$('#article').height()+300);
 		}
 	</script>
 	

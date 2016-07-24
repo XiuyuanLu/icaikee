@@ -22,13 +22,15 @@ public class SoftwareController {
 	@RequestMapping("/instruction")
 	public ModelAndView instruction() {
 		ModelAndView mv = new ModelAndView(SOFTWARE_INSTRUCTION_PAGE);
-		mv.addObject("url", addressConfig.getSoftwareInstructionAddress());
+		mv.addObject("url", addressConfig.getSoftwareReadAddress() + "software-instruction.jpg");
 		return mv;
 	}
 
 	@RequestMapping("/downloading")
 	public ModelAndView downloading() {
-		return new ModelAndView(SOFTWARE_DOWNLOADING_PAGE);
+		ModelAndView mv = new ModelAndView(SOFTWARE_DOWNLOADING_PAGE);
+		mv.addObject("url", addressConfig.getSoftwareReadAddress() + "software.zip");
+		return mv;
 	}
 
 }

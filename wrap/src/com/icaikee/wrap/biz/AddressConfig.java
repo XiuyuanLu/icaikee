@@ -18,9 +18,6 @@ public class AddressConfig {
 	@Value("#{configProperties['imgrepo.index.address.read']}")
 	private String indexReadAddress;
 
-	@Value("#{configProperties['imgrepo.software.instruction.address']}")
-	private String softwareInstructionAddress;
-
 	@Value("#{configProperties['imgrepo.video.index.address.save']}")
 	private String videoIndexSaveAddress;
 
@@ -38,6 +35,12 @@ public class AddressConfig {
 
 	@Value("#{configProperties['imgrepo.blog.index.address.read']}")
 	private String blogIndexReadAddress;
+
+	@Value("#{configProperties['imgrepo.software.address.save']}")
+	private String softwareSaveAddress;
+
+	@Value("#{configProperties['imgrepo.software.address.read']}")
+	private String softwareReadAddress;
 
 	public String getSaveAddress() {
 		return saveAddress;
@@ -69,14 +72,6 @@ public class AddressConfig {
 
 	public void setIndexReadAddress(String indexReadAddress) {
 		this.indexReadAddress = indexReadAddress;
-	}
-
-	public String getSoftwareInstructionAddress() {
-		return softwareInstructionAddress;
-	}
-
-	public void setSoftwareInstructionAddress(String softwareInstructionAddress) {
-		this.softwareInstructionAddress = softwareInstructionAddress;
 	}
 
 	public String getVideoIndexSaveAddress() {
@@ -125,6 +120,22 @@ public class AddressConfig {
 
 	public void setBlogIndexReadAddress(String blogIndexReadAddress) {
 		this.blogIndexReadAddress = blogIndexReadAddress;
+	}
+
+	public String getSoftwareSaveAddress() {
+		return softwareSaveAddress;
+	}
+
+	public void setSoftwareSaveAddress(String softwareSaveAddress) {
+		this.softwareSaveAddress = softwareSaveAddress;
+	}
+
+	public String getSoftwareReadAddress() {
+		return softwareReadAddress;
+	}
+
+	public void setSoftwareReadAddress(String softwareReadAddress) {
+		this.softwareReadAddress = softwareReadAddress;
 	}
 
 }

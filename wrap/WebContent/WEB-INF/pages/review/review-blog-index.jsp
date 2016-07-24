@@ -71,6 +71,12 @@
 #content-box .list .blogitem .words a:hover{
 	color: #abaaaa;
 }
+
+#content-box .list .blogitem .words .description{
+	height: 50px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 </style>
 
 </head>
@@ -78,7 +84,7 @@
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container" >
-		<div id="content-box" style="min-height: 800px">
+		<div id="content-box" style="min-height: 800px;">
 			<div class="nav">
 				<span>复盘笔记</span>
 			</div>

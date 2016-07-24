@@ -15,7 +15,7 @@
 
 .container .info {
 	width:300px;
-	height: 300px;
+	height: 380px;
 	border: 1px solid;
 	border-color: #e6e0e0;
 	box-shadow: 0 2px 2px #928d8d;
@@ -23,12 +23,16 @@
 	position: relative;
 	margin-bottom: 50px;
 	padding-left: 50px;
-	padding-top: 100px;
+	padding-top: 30px;
 	left: 500px;
+	
 }
 
-.container .info .title-span{
+
+.container .info span{
 	font-size: 18px;
+	border-left: 3px solid #abaaaa;
+	padding-left: 10px;
 }
 
 </style>
@@ -40,8 +44,13 @@
 	<div class="container">
 		<div class="info">
 			<form class="myForm" action="page/manage/software/instruction/upload" method="post" 
-					enctype="multipart/form-data" target="_blank">
-			  <p>指标文案: <input type="file" name="instruction" /></p>
+					enctype="multipart/form-data">
+			  <p><span>指标文案:</span> <input type="file" name="instruction" /></p>
+			  <input type="submit" value="上传" />
+			</form>
+			<form class="myForm" action="page/manage/software/software/upload" method="post" 
+					enctype="multipart/form-data">
+			  <p><span>指标软件:</span> <input type="file" name="software" /></p>
 			  <input type="submit" value="上传" />
 			</form>
 		</div>

@@ -29,13 +29,29 @@ public class SoftwareService {
 			e1.printStackTrace();
 		}
 
-		String saveAddr = addressConfig.getSaveAddress();
+		String saveAddr = addressConfig.getSoftwareSaveAddress();
 		String fileName = "software-instruction.jpg";
 
 		String filePath = saveAddr + fileName;
 
 		try {
 			instruction.transferTo(new File(filePath));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void uploadSoftware(MultipartFile software) {
+
+		String saveAddr = addressConfig.getSoftwareSaveAddress();
+		String fileName = "software.zip";
+
+		String filePath = saveAddr + fileName;
+
+		try {
+			software.transferTo(new File(filePath));
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
