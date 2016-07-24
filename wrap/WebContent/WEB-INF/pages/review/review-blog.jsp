@@ -21,7 +21,7 @@
 	overflow: visible;
 	margin: 10px;
 	margin-bottom: 100px;
-	width: 500px;
+	width: 800px;
 	height: 800px;
 }
 
@@ -40,7 +40,8 @@
 }
 
 .container .blog-content{
-	height: 100%;
+	border-top: 1px solid #abaaaa;
+	height: 80%;
 }
 
 </style>
