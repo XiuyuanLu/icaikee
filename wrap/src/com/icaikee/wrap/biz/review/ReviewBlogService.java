@@ -98,4 +98,33 @@ public class ReviewBlogService {
 		return WebConstants.SUCCESS;
 	}
 
+	@Transactional
+	public String uploadImg(MultipartFile img) {
+
+		try {
+			if (ImageIO.read(img.getInputStream()) == null) {
+				logger.info("not img");
+				return "not img";
+			}
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+
+		String addrSave = addressConfig.getBlogImgsSaveAddress();
+		String fileName = img.getOriginalFilename();
+		String indexFilePath = addrSave + fileName;
+
+		try {
+			img.transferTo(new File(indexFilePath));
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return WebConstants.FAILURE;
+		}
+
+		return WebConstants.SUCCESS;
+	}
+
 }

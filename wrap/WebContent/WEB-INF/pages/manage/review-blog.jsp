@@ -11,143 +11,99 @@
 <link rel="stylesheet" type="text/css" href="resources/css/main.css" />
 <script src="resources/js/jquery-1.9.1.min.js"></script>
 <script src="resources/js/common/common.js"></script>
-<script src="resources/js/tinymce/tinymce.min.js"></script>
 <style>
 
 .container .info {
-	position: relative;
-	width: 900px;
-	left: 100px;
+	width:300px;
+	height: 600px;
 	border: 1px solid;
 	border-color: #e6e0e0;
-	padding: 0px 100px 50px 100px;
-	margin-bottom: 100px;
-}
-
-#title-bar{
-	margin-top: 30px;
-	padding: 10px;
-}
-
-#title,#author{
-	font-size: 16px;
-}
-
-#blog-title{
-	width: 300px;
-}
-
-#blog{
-	margin-top: 20px;
+	box-shadow: 0 2px 2px #928d8d;
+	font-size: 18px;
+	position: relative;
 	margin-bottom: 50px;
+	padding-left: 5px;
+	left: 50px;
 }
 
-#publish{
-	font-size: 16px;
+.container .info .title-span{
+	font-size: 18px;
+}
+
+a{
 	text-decoration: none;
-	color: #5a5a5a;
-	border: 1px solid #abaaaa;
-	background: #abaaaa;
-	padding: 4px;
-	position: absolute;
-	left: 45%;
+	font-size: 18px;
+	color: #2c2c2c;
 }
 
-#publish:hover{
-	border: 1px solid #e6e6e6;
-	background: #e6e6e6;
+a:hover{
+	text-decoration: underline;
 }
+
+.container .info-m {
+	width:300px;
+	border: 1px solid;
+	border-color: #e6e0e0;
+	box-shadow: 0 2px 2px #928d8d;
+	font-size: 18px;
+	position: absolute;
+	left: 400px;
+	top: 0px;
+}
+
+.container .info-m .maintain-list{
+	max-height: 500px;
+	overflow: auto;
+}
+
+.container .info-m .maintain{
+	position: absolute;
+	top: 0;
+	left : 320px;
+	border: 1px solid #abaaaa;
+	height: 600px;
+	width: 500px;
+	display: none;
+	box-shadow: 0 2px 2px #928d8d;
+}
+
+.container .info-m .maintain .maintain-body{
+	position: relative;
+	left: 15%;
+	top:8%;
+	font-size: 18px;
+}
+
+textarea{
+	resize: none;
+}
+
 </style>
 
 </head>
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
-	<div class="container" style="min-height: 900px;">
+	<div class="container">
 		<div class="info">
-			<div id="title-bar">
-				<span id="title">文章标题：</span><input id="blog-title" type="text" /><br/><br/>
-				<span id="author">文章作者：</span><input id="blog-author" type="text" />
-			</div>
-			<div id="blog">
-				<textarea id="blog-content"></textarea>
-			</div>
-			<a id="publish" href="javascript:void(0)" onclick="lxySubmit()">保存文章</a>
-			<form class="myForm" id="uploadIndex"
-				action="page/manage/review/blog/cover" method="post" 
-				enctype="multipart/form-data" style="display:none">
-			    <p>封面文件: <input type="file" id="indexFile" name="indexFile" /></p>
-				<input type="hidden" id="hiddenTitle" name="title" />
-				<input type="button" value="上传" onclick="lxyIndexSubmit()"/>
-			</form>
+			<a href="page/manage/review/blog/edit">新增</a>
 		</div>
+		<br/>
+		<div class="info-m">
+			<div class="maintain-list"> 
+				<span class="title-span">维护</span>
+				<c:forEach var="item" items="${blogs}">
+					<div class="item">
+						<a href="page/manage/review/blog/edit?title=${item.blogTitle}" >${item.blogTitle}</a>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+				
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
-	
 	<script>
-		function onLoad(){
-			tinymce.init({
-			    selector: '#blog-content',
-			    theme: 'modern',
-			    width: 850,
-			    height: 500,
-			    plugins: [
-			      'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
-			      'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-			      'save table contextmenu directionality emoticons template paste textcolor'
-			    ],
-			    content_css: 'css/content.css',
-			    toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | fontselect | fontsizeselect',
-			    language:'zh_CN'
-			  });
-		}
-		
-		function lxySubmit(){
-			
-			var title=document.getElementById("blog-title").value;
-			var author=document.getElementById("blog-author").value;
-			if($.trim(title)==""){
-				alert("请输入标题");
-				return ;
-			}
-			if($.trim(author)==""){
-				alert("请输入作者");
-				return ;
-			}
-			
-			var content = tinymce.activeEditor.getContent();
-			$.ajax({
-				url:"api/review/blog/publish",
-				data:{
-					title: title,
-					author: author,
-					content: content
-				},
-				type: 'POST',
-				dataType: 'json',
-				success:function(data){
-					alert(data.message);
-					if(data.message=="success"){
-						document.getElementById("blog").style.display="none";
-						document.getElementById("publish").style.display="none";
-						document.getElementById("uploadIndex").style.display="";
-						document.getElementById("blog-title").disabled=true;
-						document.getElementById("blog-author").disabled=true;
-					}
-				}
-			});
-			
-		}
-		
-		function lxyIndexSubmit(){
-			document.getElementById("hiddenTitle").value=document.getElementById("blog-title").value;
-			var indexFile = document.getElementById("indexFile").value;
-			if($.trim(indexFile)==""){
-				alert("请添加封面文件");
-				return ;
-			}
-			document.getElementById("uploadIndex").submit();
-		}
+	
 	</script>
 	
 </body>

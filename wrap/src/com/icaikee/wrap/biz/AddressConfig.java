@@ -42,6 +42,12 @@ public class AddressConfig {
 	@Value("#{configProperties['imgrepo.software.address.read']}")
 	private String softwareReadAddress;
 
+	@Value("#{configProperties['imgrepo.blog.imgs.save']}")
+	private String blogImgsSaveAddress;
+
+	@Value("#{configProperties['imgrepo.blog.imgs.read']}")
+	private String blogImgsReadAddress;
+
 	public String getSaveAddress() {
 		return saveAddress;
 	}
@@ -136,6 +142,22 @@ public class AddressConfig {
 
 	public void setSoftwareReadAddress(String softwareReadAddress) {
 		this.softwareReadAddress = softwareReadAddress;
+	}
+
+	public String getBlogImgsSaveAddress() {
+		return blogImgsSaveAddress;
+	}
+
+	public void setBlogImgsSaveAddress(String blogImgsSaveAddress) {
+		this.blogImgsSaveAddress = blogImgsSaveAddress;
+	}
+
+	public String getBlogImgsReadAddress() {
+		return blogImgsReadAddress;
+	}
+
+	public void setBlogImgsReadAddress(String blogImgsReadAddress) {
+		this.blogImgsReadAddress = blogImgsReadAddress;
 	}
 
 }

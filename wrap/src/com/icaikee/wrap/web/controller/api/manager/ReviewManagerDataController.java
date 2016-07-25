@@ -48,4 +48,9 @@ public class ReviewManagerDataController {
 		return Message.createSuccessMessage(reviewBlogService.publish(title, author, content));
 	}
 
+	@RequestMapping("/blog/query")
+	public Message blogQuery(@RequestParam(name = "title") String title) {
+		return Message.createSuccessMessage(reviewBlogService.getSingleBlogByTitle(title));
+	}
+
 }

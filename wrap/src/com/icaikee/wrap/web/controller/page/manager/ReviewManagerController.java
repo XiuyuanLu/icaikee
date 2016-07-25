@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.icaikee.wrap.biz.AddressConfig;
 import com.icaikee.wrap.biz.review.ReviewBlogService;
 import com.icaikee.wrap.biz.review.ReviewVideoService;
 import com.icaikee.wrap.biz.review.model.ReviewVideo;
@@ -22,6 +23,8 @@ public class ReviewManagerController {
 
 	private final static String REVIEW_BLOG_MANAGE_PAGE = "manage/review-blog";
 
+	private final static String REVIEW_BLOG_EDIT_MANAGE_PAGE = "manage/review-blog-edit";
+
 	private final static String REVIEW_VIDEO_MANAGE_PAGE = "manage/review-video";
 
 	@Autowired
@@ -30,9 +33,28 @@ public class ReviewManagerController {
 	@Autowired
 	private ReviewBlogService reviewBlogService;
 
+	@Autowired
+	private AddressConfig addressConfig;
+
 	@RequestMapping("/blog")
 	public ModelAndView reviewBlogPage() {
-		return new ModelAndView(REVIEW_BLOG_MANAGE_PAGE);
+		ModelAndView mv = new ModelAndView(REVIEW_BLOG_MANAGE_PAGE);
+		mv.addObject("blogs", reviewBlogService.getBlogs());
+		return mv;
+	}
+
+	@RequestMapping("/blog/edit")
+	public ModelAndView reviewBlogEditPage(@RequestParam(name = "title", required = false) String title) {
+		ModelAndView mv = new ModelAndView(REVIEW_BLOG_EDIT_MANAGE_PAGE);
+		mv.addObject("title", title);
+		mv.addObject("savePath", addressConfig.getBlogImgsReadAddress());
+		return mv;
+	}
+
+	@RequestMapping(value = "/blog/img", method = RequestMethod.POST)
+	public ModelAndView blogImgUpload(@RequestParam(name = "img") MultipartFile img) {
+		reviewBlogService.uploadImg(img);
+		return new ModelAndView(WebConstants.SUCCESS_MANAGE_PAGE);
 	}
 
 	@RequestMapping(value = "/blog/cover", method = RequestMethod.POST)
