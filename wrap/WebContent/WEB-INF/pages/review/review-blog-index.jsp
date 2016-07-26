@@ -73,9 +73,10 @@
 }
 
 #content-box .list .blogitem .words .description{
-	height: 50px;
+	height: 55px;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space:normal; 
 }
 </style>
 

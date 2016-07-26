@@ -39,7 +39,6 @@
 		<div id="menu-second-3" class="menu-second" style="display:none">
 			<ul class="sub-menu">
 				<li class="sub-item"><a id="s1" href="javascript:void(0)" onclick="redirect('page/software/instruction')">缠论<br/>指标</a></li>
-				<li class="sub-item"><a id="s2" href="javascript:void(0)" onclick="redirect('page/software/downloading')">软件<br/>下载</a></li>
 			</ul>
 		</div>
 		

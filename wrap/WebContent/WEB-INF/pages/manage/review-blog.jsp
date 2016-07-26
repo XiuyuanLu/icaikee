@@ -23,21 +23,21 @@
 	position: relative;
 	margin-bottom: 50px;
 	padding-left: 5px;
-	left: 50px;
+	left: 550px;
 }
 
 .container .info .title-span{
 	font-size: 18px;
 }
 
-a{
-	text-decoration: none;
+.container a{
+	text-decoration: underline;
 	font-size: 18px;
 	color: #2c2c2c;
 }
 
-a:hover{
-	text-decoration: underline;
+.container a:hover{
+	color: #abaaaa;
 }
 
 .container .info-m {
@@ -86,15 +86,13 @@ textarea{
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container">
 		<div class="info">
-			<a href="page/manage/review/blog/edit">新增</a>
-		</div>
-		<br/>
-		<div class="info-m">
+			<a id="new" href="page/manage/review/blog/edit">新增</a>
+			<br/>
 			<div class="maintain-list"> 
 				<span class="title-span">维护</span>
 				<c:forEach var="item" items="${blogs}">
 					<div class="item">
-						<a href="page/manage/review/blog/edit?title=${item.blogTitle}" >${item.blogTitle}</a>
+						<a href="page/manage/review/blog/edit?title=${item.blogTitle}" >标题：${item.blogTitle}</a>
 					</div>
 				</c:forEach>
 			</div>

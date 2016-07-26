@@ -23,6 +23,7 @@ public class SoftwareController {
 	public ModelAndView instruction() {
 		ModelAndView mv = new ModelAndView(SOFTWARE_INSTRUCTION_PAGE);
 		mv.addObject("url", addressConfig.getSoftwareReadAddress() + "software-instruction.jpg");
+		mv.addObject("downloading", addressConfig.getSoftwareReadAddress() + "software.zip");
 		return mv;
 	}
 

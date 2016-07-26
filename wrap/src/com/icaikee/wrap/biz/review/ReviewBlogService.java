@@ -2,6 +2,8 @@ package com.icaikee.wrap.biz.review;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.icaikee.wrap.biz.AddressConfig;
 import com.icaikee.wrap.biz.review.model.ReviewBlog;
 import com.icaikee.wrap.db.hibernate.HibernateDao;
+import com.icaikee.wrap.util.HtmlToText;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Service
@@ -34,7 +37,19 @@ public class ReviewBlogService {
 	}
 
 	public List<ReviewBlog> getBlogs() {
-		return dao.find(ReviewBlog.class, "select x from ReviewBlog x ");
+		List<ReviewBlog> blogs = dao.find(ReviewBlog.class, "select x from ReviewBlog x ");
+		for (ReviewBlog x : blogs) {
+			try {
+				Reader in = new StringReader(x.getBlogContent());
+				HtmlToText parser = new HtmlToText();
+				parser.parse(in);
+				in.close();
+				x.setBlogContent(parser.get150Text());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return blogs;
 	}
 
 	@Transactional

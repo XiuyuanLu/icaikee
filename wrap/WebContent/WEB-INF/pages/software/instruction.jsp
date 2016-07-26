@@ -27,8 +27,13 @@
 	left: 25%;
 }
 
-.container .content-box .software-title h3{
+.container .content-box .software-title a{
 	font-size: 20px;
+	color: #2c2c2c;
+}
+
+.container .content-box .software-title a:hover{
+	color: #abaaaa;
 }
 
 .container .content-box .software-content{
@@ -51,7 +56,7 @@
 	<div class="container">
 		<div class="content-box" style="min-height: 4600px">
 			<div id="software-title" class="software-title">
-				<h3>缠论指标</h3>
+				<a href="${downloading}">点此下载软件压缩包</a>
 			</div>
 			<div id="software-content" class="software-content">
 				<img id="img" src="${url}" />
