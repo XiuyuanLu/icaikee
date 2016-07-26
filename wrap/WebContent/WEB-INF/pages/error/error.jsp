@@ -7,7 +7,9 @@
 <head>
 <base href="${base}">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>${title}</title>
+<title>缠论君-缠论第一站</title>
+<link rel="Shortcut Icon" href="resources/imgs/wrap.ico">
+<link rel="Bookmark" href="resources/imgs/wrap.ico">
 <link rel="stylesheet" type="text/css" href="resources/css/main.css" />
 <script src="resources/js/common/common.js"></script>
 

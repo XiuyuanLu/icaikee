@@ -65,7 +65,9 @@ body{
 	padding: 30px 60px;
 }
 
-.head .menu .sub-menu a:hover{
+.head .menu .sub-menu a:hover,
+.head-package .head-parent .menu-parent .sub-menu a:hover,
+.head-package .head-sub .menu-second .sub-item a:hover{
 	text-decoration: underline;
 }
 
@@ -141,7 +143,7 @@ body{
 }
 
 .head-package .head-sub .title span{
-	font-color: #2c2c2c;
+	color: #2c2c2c;
 }
 
 .head-package .head-sub .title .title-main{

@@ -54,3 +54,7 @@ function highlightItem(id){
 	var item = $("#"+id);
 	item.css('color','#2c2c2c');
 }
+
+function coming(){
+	alert('coming soon。。。');
+}
