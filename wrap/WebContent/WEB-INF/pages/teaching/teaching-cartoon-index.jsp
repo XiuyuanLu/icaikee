@@ -15,6 +15,10 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 #content-box{
 	position: relative;
 	top: 50px;
@@ -74,8 +78,8 @@
 				</div>
 			</c:forEach> 
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	
 	<script>

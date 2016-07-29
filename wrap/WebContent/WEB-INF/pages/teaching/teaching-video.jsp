@@ -15,6 +15,10 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 .container .video{
 	position: relative;
 	top: 5px;
@@ -69,8 +73,8 @@ embed{
 			</div>
 			<span id="description" title="${video.videoDescription}">简介：${video.videoDescription}</span>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
 		function onLoad(){

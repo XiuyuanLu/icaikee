@@ -15,6 +15,10 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 .container .cartoon{
 	position: relative;
 	top: 50px;
@@ -51,7 +55,7 @@
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container clearfix">
-		<div id="cartoon" class="cartoon" style="min-height: 10100px">
+		<div id="cartoon" class="cartoon" >
 			<div id="cartoon-title" class="cartoon-title">
 				<h3>${chapterId}:${cartoonName}</h3>
 				<div class="img-info">
@@ -64,8 +68,8 @@
 				<img id="img" src="${url}" />
 			</div>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
 		function onLoad(){

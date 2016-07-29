@@ -20,35 +20,28 @@ body{
 	z-index: 100;
 }
 
+
+.head .logo{
+	position: absolute;
+	left: 10%;
+	height: 100%;
+	float: left; 
+}
+
+.head .logo img{
+	height: 100px;
+	vertical-align:middle;
+}
+
 .head a{
 	text-decoration: none;
 }
 
-.head .logo{
-	margin: 10px 30px 10px 50px; 	
-	float: left; 
-}
-
-.head .title{
-	float: left; 
-	color: #ffffff;
-	font-weight: 400;
-	line-height: 30px;
-	margin-top: 30px;
-}
-
-.head .title .title-main{
-	font-size: 20px;
-}
-
-.head .title .title-sub{
-	color: #ffffff; 	
-	font-size: 14px;
-}
-
 .head .menu{
 	float: left; 
-	margin-top: 25px;
+	position: absolute;
+	left: 25%;
+	top: 23px;
 }
 
 .head .menu ul{
@@ -62,7 +55,7 @@ body{
 .head .menu .sub-menu a{
 	color: #ffffff;
 	font-size: 20px;
-	padding: 30px 60px;
+	padding: 0 60px;
 }
 
 .head .menu .sub-menu a:hover,
@@ -100,7 +93,9 @@ body{
 .head-package .head-parent .menu-parent{
 	float: left; 
 	position:absolute;
-	left: 130px;
+	width: 60%;
+	left: 20%;
+	right: 20%;
 }
 
 .head-package .head-parent .menu-parent ul{
@@ -109,12 +104,14 @@ body{
 
 .head-package .head-parent .menu-parent li{
 	float:left;
+	width: 25%;
+	text-align: center;
 }
 
 .head-package .head-parent .menu-parent .sub-menu a{
 	color: #ffffff;
 	font-size: 18px;
-	padding: 3px 50px;
+	letter-spacing: 3px;
 }
 
 .head-package .head-sub{
@@ -131,40 +128,32 @@ body{
 }
 
 .head-package .head-sub .logo{
-	margin-left: 50px;
-	width: 60px;
-	float: left;
+	position: absolute;
+	left: 7%;
+	height: 100%;
+	float: left; 
 }
 
-.head-package .head-sub .title{
-	margin-left: 20px;
-	margin-top: 20px;
-	float: left;
-}
-
-.head-package .head-sub .title span{
-	color: #2c2c2c;
-}
-
-.head-package .head-sub .title .title-main{
-	font-size: 17px;
-}
-.head-package .head-sub .title .title-sub{
-	font-size: 12px;
+.head-package .head-sub .logo img{
+	height: 80px;
+	vertical-align:middle;
 }
 
 .head-package .head-sub .menu-second{
-	margin-top: 15px;
+	position: absolute;
+	left: 20%;
+	right: 10%;
+	top: 10%;
+	bottom: 10%;
 }
 
 .head-package .head-sub .menu-second .sub-item a{
 	display: block;
 	text-align: center;
-	width: 100px;	
 	text-decoration: none;
 	color: #abaaaa;
-	font-size: 18px;
-	padding: 3px 60px;
+	padding: 0px 55px;
+	font-size: 15px;
 }
 
 .head-package .head-sub .menu-second ul{
@@ -173,6 +162,9 @@ body{
 
 .head-package .head-sub .menu-second .sub-menu li{
 	float: left;
+	width: 20%;
+	text-align: center;
+	white-space: nowrap;
 }
 
 #triangle-down {
@@ -181,21 +173,16 @@ body{
     width: 0;
     height: 0;
     top:50px;
-    left: 365px;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-top: 16px solid #2c2c2c;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 14px solid #2c2c2c;
     transition: all;
     transition-duration:0.5s;
 }
 
 
 .container{
-	position:absolute;
-	top: 130px;
 	width: 100%;
-	min-height: 520px;
-	overflow:visible;
 	background-image: url(../imgs/bg.png);
 	background-repeat: repeat-y;
 }

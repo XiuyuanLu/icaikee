@@ -32,21 +32,22 @@ function showBar(title){
 	var m1 = document.getElementById("menu-second-1");
 	var m2 = document.getElementById("menu-second-2");
 	var m3 = document.getElementById("menu-second-3");
+	var length = $('.head-package').width();
 	if(title=="1"){
 		m1.style.display="";
 		m2.style.display="none";
 		m3.style.display="none";
-		triangle.css("left",365);
+		triangle.css("left",0.4305*length);
 	}else if(title=="2"){
 		m1.style.display="none";
 		m2.style.display="";
 		m3.style.display="none";
-		triangle.css("left",500);
+		triangle.css("left",0.5745*length);
 	}else if(title=="3"){
 		m1.style.display="none";
 		m2.style.display="none";
 		m3.style.display="";
-		triangle.css("left",640);
+		triangle.css("left",0.7191*length);
 	}
 }
 

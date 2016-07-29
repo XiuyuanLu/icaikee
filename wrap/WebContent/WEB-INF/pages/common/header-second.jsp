@@ -12,15 +12,11 @@
 	</div>
 	<div id="triangle-down"></div>
 	<div id="head-sub" class="head-sub">
-		<a href="page/home">
-			<div class="logo">
-				<img src="resources/imgs/header-black.png" height="80" />
-			</div>
-			<div class="title">
-				<span class="title-main">缠&nbsp;论&nbsp;君</span><br/>
-				<span class="title-sub">缠论第一站</span>
-			</div>
-		</a>
+		<div class="logo">
+			<a href="page/home">
+				<img src="resources/imgs/logo-black.png" />
+			</a>
+		</div>
 		<div id="menu-second-1" class="menu-second" style="display:none">
 			<ul class="sub-menu">
 				<li class="sub-item"><a id="i1" href="javascript:void(0)" onclick="redirect('page/teaching/cartoon')">从零开始学<br/>缠论漫画</a></li>

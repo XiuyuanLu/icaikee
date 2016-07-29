@@ -13,6 +13,7 @@ import com.icaikee.wrap.biz.teaching.TeachingCartoonService;
 import com.icaikee.wrap.biz.teaching.TeachingVideoService;
 import com.icaikee.wrap.biz.teaching.model.CartoonInfo;
 import com.icaikee.wrap.biz.teaching.model.Video;
+import com.icaikee.wrap.common.logger.CounterLog;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -54,6 +55,7 @@ public class TeachingController {
 		mv.addObject("author", cartoon.getCartoonAuthor());
 		mv.addObject("description", cartoon.getCartoonDescription());
 		mv.addObject("accessTime", cartoon.getCartoonAccessTime());
+		CounterLog.counterLog(logger, "lxytc" + cartoon.getCartoonId());
 		return mv;
 	}
 
@@ -72,6 +74,7 @@ public class TeachingController {
 		ModelAndView mv = new ModelAndView(TEACHING_VIDEO_PAGE);
 		Video video = videoService.getVideo(videoName);
 		mv.addObject("video", video);
+		CounterLog.counterLog(logger, "lxytv" + video.getVideoId());
 		return mv;
 	}
 }

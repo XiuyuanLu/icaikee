@@ -15,6 +15,10 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 .container .content-box{
 	position: relative;
 	top: 50px;
@@ -42,6 +46,7 @@
 	position: absolute;
 	top: 80px;
 	left: 25%;
+	height: 100%;
 }
 
 .container .content-box .software-content img{
@@ -56,7 +61,7 @@
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container">
-		<div class="content-box" style="min-height: 4600px">
+		<div class="content-box">
 			<div id="software-title" class="software-title">
 				<a href="${downloading}">点此下载软件压缩包</a>
 			</div>
@@ -64,8 +69,8 @@
 				<img id="img" src="${url}" />
 			</div>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
 		function onLoad(){

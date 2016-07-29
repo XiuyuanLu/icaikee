@@ -18,6 +18,10 @@
 
 <style>
 
+.container{
+	padding-top: 100px;
+}
+
 .container .slideBox .bd li img{
 	width: 1280px;
 	height: 500px;
@@ -34,7 +38,7 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header.jsp" %>
-	<div class="container" style="top: 100px">
+	<div class="container">
 		<div id="slideBox" class="slideBox">
 			<div id="hd" class="hd">
 				<ul>
@@ -50,15 +54,14 @@
 					<li><img src="resources/imgs/home/home3.png" /></li>
 				</ul>
 			</div>
-
 			<a class="prev" href="javascript:void(0)"></a>
 			<a class="next" href="javascript:void(0)"></a>
 		</div>
 		<img src="resources/imgs/home/home1.png" />
 		<img src="resources/imgs/home/home2.png" />
 		<img src="resources/imgs/home/home3.png" />
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
 		jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,titCell: ".hd li",trigger:"click"});
