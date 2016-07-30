@@ -8,9 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class Counter {
 
 	@Scheduled(cron = "*/5 * * * * ?")

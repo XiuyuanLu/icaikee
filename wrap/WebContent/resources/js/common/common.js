@@ -9,18 +9,22 @@ window.onscroll = function () {
     var hp = $('#head-parent');
     var ta = $('#triangle-down');
     var hs = $('#head-sub');
+    var bk = $('#back-to-top');
     if(top>10){
     	hp.css("top","-50px");
     	hs.css("top","0px");
-    	ta.css("display","none");
+    	ta.css("display","none"); 
+    	bk.css("display","block");
+    	bk.css("top",top+500);
     }
     else{
     	hp.css("top","0px");
     	hs.css("top","50px");
     	ta.css("display","");
     	ta.css("top","50px");
+    	bk.css("display","none");
     }
-    	
+   
 };
 
 function redirect(path){
@@ -54,6 +58,10 @@ function showBar(title){
 function highlightItem(id){
 	var item = $("#"+id);
 	item.css('color','#2c2c2c');
+}
+
+function backToTop(){
+	window.scrollTo(0,0);
 }
 
 function coming(){

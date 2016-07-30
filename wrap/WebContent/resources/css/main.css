@@ -213,3 +213,18 @@ body{
 	text-align: center;
 	color: #B8AFAF;
 }
+
+#back-to-top{
+	position: absolute;
+	right: 20px;
+	z-index: 9999;
+	display: none;
+}
+
+#back-to-top a{
+	color: #aba9a9;
+}
+
+#back-to-top a:hover{
+	color: #3f3f3f;
+}
