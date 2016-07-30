@@ -20,17 +20,16 @@
 }
 
 .container .content-box{
-	position: relative;
-	top: 50px;
-	left: 100px;
-	width:100%;
-	height:100%;
+	width: 60%;
+	margin: 3% 20%;
 }
 
 .container .content-box .software-title{
 	text-align: center;
-	position: absolute;
-	left: 25%;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+	margin-bottom: 5%;
 }
 
 .container .content-box .software-title a{
@@ -43,14 +42,14 @@
 }
 
 .container .content-box .software-content{
-	position: absolute;
-	top: 80px;
 	left: 25%;
 	height: 100%;
 }
 
 .container .content-box .software-content img{
-	max-width: 500px;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
 	box-shadow: 0 2px 2px #928d8d;
 }
 

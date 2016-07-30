@@ -15,36 +15,37 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 .container .blog{
-	position: relative;
-	top: 5px;
-	left: 290px;
-	display: block;
-	overflow: visible;
-	margin: 10px;
-	margin-bottom: 100px;
-	width: 800px;
-	height: 800px;
+	margin: 5% 15%;
+	width:70%;
 }
 
-.container .blog-title{
-	width: 700px;
+.container .blog .blog-title{
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
-.container .blog-title h3{
+.container .blog .blog-title h3{
 	text-align: center;
 	font-size: 18px;
 }
 
-.container .blog-title .blog-info{
+.container .blog .blog-title .blog-info{
 	text-align: center;
 	font-size: 12px;
 }
 
-.container .blog-content{
+.container .blog .blog-content{
 	border-top: 1px solid #abaaaa;
-	height: 80%;
+	height: 100%;
+	min-height: 500px;
 }
+
 
 </style>
 
@@ -52,7 +53,7 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
-	<div class="container" style="min-height:800px;">
+	<div class="container">
 		<div id="blog" class="blog">
 			<div id="blog-title" class="blog-title">
 				<h3>${blog.blogTitle}</h3>
@@ -67,15 +68,13 @@
 				</article>
 			</div>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
 		function onLoad(){
 			showBar("2");
 			highlightItem("f1");
-			$('.container').css('height',$('#article').height()+300);
-			$('#blog').css('height',$('#article').height()+300);
 		}
 	</script>
 	

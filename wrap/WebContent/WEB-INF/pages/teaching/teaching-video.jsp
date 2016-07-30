@@ -20,18 +20,14 @@
 }
 
 .container .video{
-	position: relative;
-	top: 5px;
-	left: 290px;
-	display: block;
-	overflow: visible;
-	margin: 10px;
-	margin-bottom: 100px;
-	width:500px;
+	margin: 2% 15%;
+	width:70%;
 }
 
 .container .video-title{
-	width: 700px;
+	width: 60%;
+	margin-left: 20%;
+	margin-right: 20%;
 }
 
 .container .video-title h3{
@@ -45,12 +41,22 @@
 }
 
 .container .video-content{
-	height: 100%;
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	margin-bottom:5%;
+	height: 500px;
+}
+
+.container .des{
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
 }
 
 embed{
-	width: 700px;
-	height: 560px;
+	width: 100%;
+	height: 100%;
 }
 
 </style>
@@ -71,7 +77,13 @@ embed{
 			<div id="video-content" class="video-content">
 				${video.videoUrl}
 			</div>
-			<span id="description" title="${video.videoDescription}">简介：${video.videoDescription}</span>
+			<div class="des">
+				<span>视频简介：</span>
+				<br/>
+				<artical>
+					${video.videoDescription}
+				</artical>
+			</div>
 		</div>
 	</div>
 	<%@include file="/WEB-INF/pages/common/footer.jsp" %>

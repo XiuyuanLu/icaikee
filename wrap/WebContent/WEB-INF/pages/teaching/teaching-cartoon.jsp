@@ -20,14 +20,8 @@
 }
 
 .container .cartoon{
-	position: relative;
-	top: 50px;
-	left: 390px;
-	display: block;
-	overflow: visible;
-	margin: 10px;
-	margin-bottom: 100px;
-	width:500px;
+	width: 60%;
+	margin: 3% 20%;
 }
 
 .container .cartoon-title h3{
@@ -36,6 +30,9 @@
 }
 
 .container .cartoon-title .img-info{
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
 	text-align: center;
 	font-size: 18px;
 }
@@ -45,7 +42,9 @@
 }
 
 .container .cartoon-content img{
-	max-width: 500px;
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
 }
 
 </style>

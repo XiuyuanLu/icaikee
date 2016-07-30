@@ -15,12 +15,15 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 #content-box{
-	position: relative;
-	top: 50px;
-	left: 100px;
-	width:100%;
-	height:100%;
+	margin: 5% 15%;
+	width:70%;
+	min-height: 500px;
+	height: auto;
 }
 
 #content-box .item{
@@ -62,7 +65,7 @@
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container" >
-		<div id="content-box" style="min-height: 800px">
+		<div id="content-box">
 			<c:forEach var="item" items="${videos}">
 				<div class="item">
 					<div class="item-img">
@@ -74,8 +77,8 @@
 				</div>
 			</c:forEach> 
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	
 	<script>

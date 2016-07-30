@@ -15,12 +15,15 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top:130px;
+}
+
 #content-box{
-	position: relative;
-	top: 50px;
-	left: 150px;
-	width:1000px;
-	height:100%;
+	margin: 5% 15%;
+	width:70%;
+	min-height: 500px;
+	height: auto;
 }
 
 #content-box .nav{
@@ -36,9 +39,9 @@
 
 #content-box .list{
 	width: 100%;
-	min-height: 500px;
 	margin-top: 10px;
 	border-top: 1px solid #abaaaa;
+	
 }
 
 #content-box .list .blogitem{
@@ -56,7 +59,7 @@
 
 #content-box .list .blogitem .words{
 	float: left;
-	width: 600px;
+	width: 60%;
 	display: inline;
 }
 
@@ -87,7 +90,7 @@
 <body>
 	<%@include file="/WEB-INF/pages/common/header-second.jsp" %>
 	<div class="container" >
-		<div id="content-box" style="min-height: 800px;">
+		<div id="content-box">
 			<div class="nav">
 				<span>复盘笔记</span>
 			</div>
@@ -110,8 +113,8 @@
 				</c:forEach>
 			</div>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	
 	<script>

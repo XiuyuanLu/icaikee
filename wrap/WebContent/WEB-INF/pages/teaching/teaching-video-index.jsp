@@ -20,11 +20,10 @@
 }
 
 #content-box{
-	position: relative;
-	top: 50px;
-	left: 100px;
-	width:100%;
-	height:100%;
+	margin: 5% 15%;
+	width:70%;
+	min-height: 500px;
+	height: auto;
 }
 
 #content-box .item{
