@@ -14,6 +14,9 @@
 <script src="resources/js/common/common.js"></script>
 
 <style>
+.container{
+	padding-top: 100px;
+}
 </style>
 
 </head>

@@ -14,17 +14,29 @@
 <script src="resources/js/jquery-1.9.1.min.js"></script>
 <script src="resources/js/common/common.js"></script>
 <style>
+.container{
+	padding-top: 100px;
+}
+
+.container .content{
+	margin-left: 7%;
+	margin-right: 7%;
+	height: 700px;
+	width: 84%;
+}
+
+
 .container .info {
+	display: inline-block;
+	position: absolute;
 	width:300px;
-	height: 500px;
+	height: 90%;
 	border: 1px solid;
 	border-color: #e6e0e0;
 	box-shadow: 0 2px 2px #928d8d;
 	font-size: 18px;
-	position: relative;
-	margin-bottom: 50px;
+	margin: 2%;
 	padding-left: 5px;
-	left: 50px;
 }
 
 .container .info .title-span{
@@ -41,34 +53,23 @@ a:hover{
 	text-decoration: underline;
 }
 
-.container .info-m {
-	width:300px;
-	border: 1px solid;
-	border-color: #e6e0e0;
-	box-shadow: 0 2px 2px #928d8d;
-	font-size: 18px;
-	position: absolute;
-	left: 400px;
-	top: 0px;
-}
-
-.container .info-m .maintain-list{
+.container .maintain-list{
 	max-height: 500px;
 	overflow: auto;
 }
 
-.container .info-m .maintain{
+.container .maintain{
 	position: absolute;
-	top: 0;
-	left : 320px;
+	left: 60%;
 	border: 1px solid #abaaaa;
-	height: 500px;
-	width: 500px;
+	height:90%;
+	width: 350px;
 	display: none;
 	box-shadow: 0 2px 2px #928d8d;
+	margin: 2%;
 }
 
-.container .info-m .maintain .maintain-body{
+.container .maintain .maintain-body{
 	position: relative;
 	left: 15%;
 	top:8%;
@@ -85,28 +86,29 @@ textarea{
 <body>
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container">
-		<div class="info">
-			<span class="title-span">新增</span>
-			<form class="myForm" id="createVideo" 
-				action="page/manage/review/video/upload" method="post" 
-				enctype="multipart/form-data">
-			  <p>视频名称: <input type="text" id="videoName" name="videoName" /></p>
-			  <p>视频作者: <input type="text" id="videoAuthor" name="videoAuthor" /></p>
-			  <p>视频链接: <input type="text" id="videoUrl"name="videoUrl" /></p>
-			  <p>视频简介: <br/><textarea id="videoDescription" cols="35" rows="5" name="videoDescription"></textarea></p>
-			  <p>封面文件: <input type="file" id="videoIndexFile" name="indexFile" /></p>
-			  <input type="button" value="上传" onclick="lxySubmit()"/>
-			</form>
-		</div>
-		<br/>
-		<div class="info-m">
-			<div class="maintain-list"> 
-				<span class="title-span">维护</span>
-				<c:forEach var="item" items="${videos}">
-					<div class="item">
-						<a href="javascript:void(0)" onclick="query('${item.videoName}')" >${item.videoName}</a>
-					</div>
-				</c:forEach>
+		<div class="content">
+			<div class="info">
+				<span class="title-span">新增</span>
+				<form class="myForm" id="createVideo" 
+					action="page/manage/review/video/upload" method="post" 
+					enctype="multipart/form-data">
+				  <p>视频名称: <input type="text" id="videoName" name="videoName" /></p>
+				  <p>视频作者: <input type="text" id="videoAuthor" name="videoAuthor" /></p>
+				  <p>视频链接: <input type="text" id="videoUrl"name="videoUrl" /></p>
+				  <p>视频简介: <br/><textarea id="videoDescription" cols="35" rows="5" name="videoDescription"></textarea></p>
+				  <p>封面文件: <input type="file" id="videoIndexFile" name="indexFile" /></p>
+				  <input type="button" value="上传" onclick="lxySubmit()"/>
+				</form>
+			</div>
+			<div class="info" style="left: 35%;">
+				<div class="maintain-list"> 
+					<span class="title-span">维护</span>
+					<c:forEach var="item" items="${videos}">
+						<div class="item">
+							<a href="javascript:void(0)" onclick="query('${item.videoName}')" >${item.videoName}</a>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			<div id="maintain" class="maintain">
 				<div class="maintain-body"> 
@@ -126,9 +128,8 @@ textarea{
 				</div>
 			</div>
 		</div>
-		
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	<input id="selectedVideo" type="hidden"/>
 	<input id="videoNames" type="hidden" value="${videoNames}"/>
 	<script>

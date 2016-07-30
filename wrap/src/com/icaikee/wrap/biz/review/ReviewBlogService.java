@@ -97,13 +97,14 @@ public class ReviewBlogService {
 	}
 
 	@Transactional
-	public String publish(String title, String author, String content) {
+	public String publish(String title, String author, String content, boolean isUpdate) {
 
 		ReviewBlog blog = getSingleBlogByTitle(title);
-		if (blog != null)
+		if (!isUpdate && blog != null)
 			return "±ÍÃ‚÷ÿ∏¥";
 
-		blog = new ReviewBlog();
+		if (!isUpdate)
+			blog = new ReviewBlog();
 		blog.setBlogTitle(title);
 		blog.setBlogAuthor(author);
 		blog.setBlogContent(content);

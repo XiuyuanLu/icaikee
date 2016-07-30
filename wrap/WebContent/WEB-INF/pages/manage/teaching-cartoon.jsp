@@ -15,17 +15,28 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top: 100px;
+}
+
+.container .content{
+	margin-left: 7%;
+	margin-right: 7%;
+	height: 700px;
+	width: 84%;
+}
+
 .container .info {
+	display: inline-block;
+	position: absolute;
 	width:300px;
-	height: 600px;
+	height: 90%;
 	border: 1px solid;
 	border-color: #e6e0e0;
 	box-shadow: 0 2px 2px #928d8d;
 	font-size: 18px;
-	position: relative;
-	margin-bottom: 50px;
+	margin: 2%;
 	padding-left: 5px;
-	left: 50px;
 }
 
 .container .info .title-span{
@@ -42,37 +53,23 @@ a:hover{
 	text-decoration: underline;
 }
 
-.container .info-m {
-	width:300px;
-	border: 1px solid;
-	border-color: #e6e0e0;
-	box-shadow: 0 2px 2px #928d8d;
-	font-size: 18px;
-	position: absolute;
-	left: 400px;
-	top: 0px;
-}
-
-.container .info-m .maintain-list{
-	max-height: 500px;
+.container .info .maintain-list{
 	overflow: auto;
 }
 
-.container .info-m .maintain{
+.container .maintain{
 	position: absolute;
-	top: 0;
-	left : 320px;
+	left: 60%;
 	border: 1px solid #abaaaa;
-	height: 600px;
-	width: 500px;
+	height:90%;
+	width: 350px;
 	display: none;
 	box-shadow: 0 2px 2px #928d8d;
+	margin: 2%;
 }
 
-.container .info-m .maintain .maintain-body{
-	position: relative;
-	left: 15%;
-	top:8%;
+.container .maintain .maintain-body{
+	margin-left: 2%;
 	font-size: 18px;
 }
 
@@ -87,29 +84,30 @@ textarea{
 <body>
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container">
-		<div class="info">
-			<span class="title-span">新增</span>
-			<form class="myForm" id="createCartoon" 
-			 		action="page/manage/teaching/cartoon/upload" method="post" 
-					enctype="multipart/form-data">
-			  <p>章&nbsp;节: <input type="text" id="chapterId" name="chapterId" /></p>
-			  <p>漫画名称: <input type="text" id="cartoonName" name="cartoonName" /></p>
-			  <p>作者名称: <input type="text" id="author" name="author" value="Gaga"/></p>
-			  <p>漫画简介: <br/><textarea cols="35" rows="5" id="description" name="description"></textarea></p>
-			  <p>漫画文件: <input type="file" id="cartoonFile" name="img" /></p>
-			  <p>封面文件: <input type="file" id="indexFile" name="index" /></p>
-			  <input type="button" value="上传" onclick="lxySubmit()"/>
-			</form>
-		</div>
-		<br/>
-		<div class="info-m">
-			<div class="maintain-list"> 
-				<span class="title-span">维护</span>
-				<c:forEach var="item" items="${cartoons}">
-					<div class="item">
-						<a href="javascript:void(0)" onclick="query('${item.cartoonChapterId}')" >${item.cartoonChapterId}</a>
-					</div>
-				</c:forEach>
+		<div class="content">
+			<div class="info">
+				<span class="title-span">新增</span>
+				<form class="myForm" id="createCartoon" 
+				 		action="page/manage/teaching/cartoon/upload" method="post" 
+						enctype="multipart/form-data">
+				  <p>章&nbsp;节: <input type="text" id="chapterId" name="chapterId" /></p>
+				  <p>漫画名称: <input type="text" id="cartoonName" name="cartoonName" /></p>
+				  <p>作者名称: <input type="text" id="author" name="author" value="Gaga"/></p>
+				  <p>漫画简介: <br/><textarea cols="35" rows="5" id="description" name="description"></textarea></p>
+				  <p>漫画文件: <input type="file" id="cartoonFile" name="img" /></p>
+				  <p>封面文件: <input type="file" id="indexFile" name="index" /></p>
+				  <input type="button" value="上传" onclick="lxySubmit()"/>
+				</form>
+			</div>
+			<div class="info" style="left: 35%;">
+				<div class="maintain-list"> 
+					<span class="title-span">维护</span>
+					<c:forEach var="item" items="${cartoons}">
+						<div class="item">
+							<a href="javascript:void(0)" onclick="query('${item.cartoonChapterId}')" >${item.cartoonChapterId}</a>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 			<div id="maintain" class="maintain">
 				<div class="maintain-body"> 
@@ -136,9 +134,8 @@ textarea{
 				</div>
 			</div>
 		</div>
-				
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	<input id="selectedChapter" type="hidden"/>
 	<input id="cartoonChapters" type="hidden" value="${cartoonChapters}"/>
 	<script>
@@ -228,7 +225,7 @@ textarea{
 				return ;
 			}
 			document.getElementById("selectedChapter").value=data.cartoonChapterId;;
-			document.getElementById("maintain").style.display="block";
+			document.getElementById("maintain").style.display="inline-block";
 			document.getElementById("chapterIdForUpdate").value=data.cartoonChapterId;
 			document.getElementById("cartoonNameForUpdate").value=data.cartoonName;
 			document.getElementById("authorForUpdate").value=data.cartoonAuthor;

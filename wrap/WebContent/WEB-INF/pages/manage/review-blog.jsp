@@ -15,69 +15,63 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top: 100px;
+}
+
+.container .content{
+	margin-left: 7%;
+	margin-right: 7%;
+	height: 700px;
+	width: 84%;
+}
+
 .container .info {
+	display: inline-block;
+	position: absolute;
 	width:300px;
-	height: 600px;
+	height: 90%;
 	border: 1px solid;
 	border-color: #e6e0e0;
 	box-shadow: 0 2px 2px #928d8d;
 	font-size: 18px;
-	position: relative;
-	margin-bottom: 50px;
+	margin-top: 2%;
+	margin-left: 30%;
 	padding-left: 5px;
-	left: 550px;
 }
 
 .container .info .title-span{
 	font-size: 18px;
 }
 
-.container a{
-	text-decoration: underline;
+a{
+	text-decoration: none;
 	font-size: 18px;
 	color: #2c2c2c;
 }
 
-.container a:hover{
-	color: #abaaaa;
+a:hover{
+	text-decoration: underline;
 }
 
-.container .info-m {
-	width:300px;
-	border: 1px solid;
-	border-color: #e6e0e0;
-	box-shadow: 0 2px 2px #928d8d;
-	font-size: 18px;
-	position: absolute;
-	left: 400px;
-	top: 0px;
-}
-
-.container .info-m .maintain-list{
-	max-height: 500px;
+.container .info .maintain-list{
 	overflow: auto;
 }
 
-.container .info-m .maintain{
+.container .maintain{
 	position: absolute;
-	top: 0;
-	left : 320px;
+	left: 60%;
 	border: 1px solid #abaaaa;
-	height: 600px;
-	width: 500px;
+	height:90%;
+	width: 350px;
 	display: none;
 	box-shadow: 0 2px 2px #928d8d;
+	margin: 2%;
 }
 
-.container .info-m .maintain .maintain-body{
-	position: relative;
-	left: 15%;
-	top:8%;
+.container .maintain .maintain-body{
+	margin-left: 2%;
 	font-size: 18px;
-}
-
-textarea{
-	resize: none;
 }
 
 </style>
@@ -87,21 +81,21 @@ textarea{
 <body>
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
 	<div class="container">
-		<div class="info">
-			<a id="new" href="page/manage/review/blog/edit">新增</a>
-			<br/>
-			<div class="maintain-list"> 
-				<span class="title-span">维护</span>
-				<c:forEach var="item" items="${blogs}">
-					<div class="item">
-						<a href="page/manage/review/blog/edit?title=${item.blogTitle}" >标题：${item.blogTitle}</a>
-					</div>
-				</c:forEach>
+		<div class="content">
+			<div class="info">
+				<a id="new" href="page/manage/review/blog/edit?isUpdate=false">新增</a>
+				<div class="maintain-list"> 
+					<span class="title-span">维护</span>
+					<c:forEach var="item" items="${blogs}">
+						<div class="item">
+							<a href="page/manage/review/blog/edit?title=${item.blogTitle}&isUpdate=true" >标题：${item.blogTitle}</a>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
-				
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	<script>
 	
 	</script>

@@ -15,8 +15,11 @@
 <script src="resources/js/common/common.js"></script>
 <style>
 
+.container{
+	padding-top: 100px;
+}
+
 .container .goback{
-	position: relative;
 	height: 500px;
 	text-align: center;
 	font-size: 20px;
@@ -32,8 +35,8 @@
 		<div class="goback">
 			上传成功，<a href="page/manage/teaching/cartoon">返回</a>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	
 	<script>
 	</script>

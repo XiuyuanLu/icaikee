@@ -44,8 +44,8 @@ public class ReviewManagerDataController {
 
 	@RequestMapping("/blog/publish")
 	public Message blogPublish(@RequestParam(name = "title") String title, @RequestParam(name = "author") String author,
-			@RequestParam(name = "content") String content) {
-		return Message.createSuccessMessage(reviewBlogService.publish(title, author, content));
+			@RequestParam(name = "content") String content, @RequestParam(name = "isUpdate") boolean isUpdate) {
+		return Message.createSuccessMessage(reviewBlogService.publish(title, author, content, isUpdate));
 	}
 
 	@RequestMapping("/blog/query")

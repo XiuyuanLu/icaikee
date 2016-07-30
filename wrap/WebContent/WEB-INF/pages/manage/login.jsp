@@ -16,8 +16,8 @@
 <style>
 
 .container{
-	top: 0;
-	height: 100%;
+	padding-top:130px;
+	height: 600px;
 }
 
 .container .login{

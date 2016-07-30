@@ -16,14 +16,28 @@
 <script src="resources/js/tinymce/tinymce.min.js"></script>
 <style>
 
-.container .info {
-	position: relative;
-	width: 900px;
-	left: 100px;
+.container{
+	padding-top: 100px;
+}
+
+.container .content{
+	margin-left: 7%;
+	margin-right: 7%;
+	height: 1000px;
+	width: 86%;
 	border: 1px solid;
 	border-color: #e6e0e0;
-	padding: 0px 100px 50px 100px;
-	margin-bottom: 100px;
+	box-shadow: 0 2px 2px #928d8d;
+}
+
+.container .info {
+	display: inline-block;
+	position: absolute;
+	width:70%;
+	font-size: 18px;
+	margin-top: 2% ;
+	margin-left: 12%;
+	margin-right: 18%;
 }
 
 #title-bar{
@@ -52,7 +66,7 @@
 	background: #abaaaa;
 	padding: 4px;
 	position: absolute;
-	left: 45%;
+	left: 40%;
 }
 
 #publish:hover{
@@ -65,31 +79,34 @@
 
 <body>
 	<%@include file="/WEB-INF/pages/common/header-manage.jsp" %>
-	<div class="container" style="min-height: 900px;">
-		<div class="info">
-			<div id="title-bar">
-				<span id="title">文章标题：</span><input id="blog-title" type="text" value="${title}"/><br/><br/>
-				<span id="author">文章作者：</span><input id="blog-author" type="text" />
+	<div class="container">
+		<div class="content">
+			<div class="info">
+				<div id="title-bar">
+					<span id="title">文章标题：</span><input id="blog-title" type="text" value="${title}"/><br/><br/>
+					<span id="author">文章作者：</span><input id="blog-author" type="text" />
+				</div>
+				<div id="blog">
+					<textarea id="blog-content"></textarea>
+				</div>
+				<a id="publish" href="javascript:void(0)" onclick="lxySubmit()">保存文章</a>
+				<form class="myForm" id="uploadIndex"
+					action="page/manage/review/blog/cover" method="post" 
+					enctype="multipart/form-data" style="display:none">
+				    <p>封面文件: <input type="file" id="indexFile" name="indexFile" /></p>
+					<input type="hidden" id="hiddenTitle" name="title" />
+					<input type="button" value="上传" onclick="lxyIndexSubmit()"/>
+				</form>
 			</div>
-			<div id="blog">
-				<textarea id="blog-content"></textarea>
-			</div>
-			<a id="publish" href="javascript:void(0)" onclick="lxySubmit()">保存文章</a>
-			<form class="myForm" id="uploadIndex"
-				action="page/manage/review/blog/cover" method="post" 
-				enctype="multipart/form-data" style="display:none">
-			    <p>封面文件: <input type="file" id="indexFile" name="indexFile" /></p>
-				<input type="hidden" id="hiddenTitle" name="title" />
-				<input type="button" value="上传" onclick="lxyIndexSubmit()"/>
-			</form>
 		</div>
-	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	</div>
+	<%@include file="/WEB-INF/pages/common/footer.jsp" %>
 	<iframe id="form_target" name="form_target" style="display:none"></iframe>
 	<form id="my_form" action="page/manage/review/blog/img" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
 	    <input name="img" type="file" onchange="getUrl()">
 	</form>
 	<input type="hidden" id="savepath" value="${savePath}" />
+	<input type="hidden" id="isUpdate" value="${isUpdate}" />
 	<script>
 		function onLoad(){
 			tinymce.init({
@@ -160,7 +177,8 @@
 				data:{
 					title: title,
 					author: author,
-					content: content
+					content: content,
+					isUpdate: document.getElementById('isUpdate').value
 				},
 				type: 'POST',
 				dataType: 'json',

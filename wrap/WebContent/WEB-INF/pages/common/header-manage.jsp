@@ -8,11 +8,9 @@
 </style>
 <div class="head">	
 	<div class="logo">
-		<img src="resources/imgs/header.png" height="90" />
-	</div>
-	<div class="title">
-		<span class="title-main">缠&nbsp;论&nbsp;君</span><br/>
-		<span class="title-sub">缠论第一站</span>
+		<a href="page/home">
+			<img src="resources/imgs/logo-white.png" />
+		</a>
 	</div>
 	<div class="menu">
 		<ul class="sub-menu" >

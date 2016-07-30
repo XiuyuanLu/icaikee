@@ -44,9 +44,11 @@ public class ReviewManagerController {
 	}
 
 	@RequestMapping("/blog/edit")
-	public ModelAndView reviewBlogEditPage(@RequestParam(name = "title", required = false) String title) {
+	public ModelAndView reviewBlogEditPage(@RequestParam(name = "title", required = false) String title,
+			@RequestParam(name = "isUpdate") boolean isUpdate) {
 		ModelAndView mv = new ModelAndView(REVIEW_BLOG_EDIT_MANAGE_PAGE);
 		mv.addObject("title", title);
+		mv.addObject("isUpdate", isUpdate);
 		mv.addObject("savePath", addressConfig.getBlogImgsReadAddress());
 		return mv;
 	}
