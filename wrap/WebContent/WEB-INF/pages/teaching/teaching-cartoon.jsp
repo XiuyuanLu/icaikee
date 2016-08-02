@@ -48,6 +48,11 @@
 	margin-right: 10%;
 }
 
+.container .cartoon-content .btns{
+	padding-left: 45%;
+	padding-right: 45%;
+}
+
 </style>
 
 </head>
@@ -65,7 +70,11 @@
 			</div>
 			<br/>
 			<div id="cartoon-content" class="cartoon-content">
-				<img id="img" src="${url}" />
+				<img id="img" />
+				<div class="btns">
+					<a href="javascript:void(0)" onclick="prev()">上一页</a>
+					<a href="javascript:void(0)" onclick="next()">下一页</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -73,10 +82,38 @@
 	<div id="back-to-top">
 		<a href="javascript:void(0)" onclick="backToTop()"><i class="fa fa-3x fa-arrow-up"></i></a>
 	</div>
+	<input id="url" type="hidden" value="${url}">
 	<script>
 		function onLoad(){
 			showBar("1");
 			highlightItem("i1");
+			showImg();
+		}
+		
+		var currentIndex =  0;
+		function showImg(){
+			var url = document.getElementById('url').value;
+			var urls = url.split(";");
+			var img = document.getElementById('img');
+			img.src=urls[0];
+		}
+		
+		function prev(){
+			var url = document.getElementById('url').value;
+			var urls = url.split(";");
+			if(currentIndex>0)
+				currentIndex--;
+			var img = document.getElementById('img');
+			img.src=urls[currentIndex];
+		}
+		
+		function next(){
+			var url = document.getElementById('url').value;
+			var urls = url.split(";");
+			if(currentIndex<urls.length-2)
+				currentIndex++;
+			var img = document.getElementById('img');
+			img.src=urls[currentIndex];
 		}
 	</script>
 	

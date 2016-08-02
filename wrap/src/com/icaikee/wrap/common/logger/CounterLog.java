@@ -25,7 +25,7 @@ public class CounterLog {
 	/**
 	 * 自定义级别名称，以及级别范围
 	 */
-	private static final Level counterLogLevel = new CounterLogLevel(20050, "X", SyslogAppender.LOG_LOCAL0);
+	private static final Level counterLogLevel = new CounterLogLevel(60000, "X", SyslogAppender.LOG_LOCAL0);
 
 	/**
 	 * 使用日志打印logger中的log方法

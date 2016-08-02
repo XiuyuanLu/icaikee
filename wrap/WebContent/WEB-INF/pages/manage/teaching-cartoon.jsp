@@ -94,7 +94,7 @@ textarea{
 				  <p>漫画名称: <input type="text" id="cartoonName" name="cartoonName" /></p>
 				  <p>作者名称: <input type="text" id="author" name="author" value="Gaga"/></p>
 				  <p>漫画简介: <br/><textarea cols="35" rows="5" id="description" name="description"></textarea></p>
-				  <p>漫画文件: <input type="file" id="cartoonFile" name="img" /></p>
+				  <p>漫画文件: <input type="file" id="cartoonFile" name="imgs[]" multiple="multiple"/></p>
 				  <p>封面文件: <input type="file" id="indexFile" name="index" /></p>
 				  <input type="button" value="上传" onclick="lxySubmit()"/>
 				</form>

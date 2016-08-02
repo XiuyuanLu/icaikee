@@ -13,6 +13,8 @@ import com.icaikee.wrap.biz.review.ReviewBlogService;
 import com.icaikee.wrap.biz.review.ReviewVideoService;
 import com.icaikee.wrap.biz.review.model.ReviewBlog;
 import com.icaikee.wrap.biz.review.model.ReviewVideo;
+import com.icaikee.wrap.common.logger.CounterLog;
+import com.icaikee.wrap.scheduler.CounterConstants;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -47,6 +49,7 @@ public class ReviewController {
 		ModelAndView mv = new ModelAndView(REVIEW_BLOG_PAGE);
 		ReviewBlog blog = reviewBlogService.getSingleBlogByTitle(title);
 		mv.addObject("blog", blog);
+		CounterLog.counterLog(logger, CounterConstants.TYPE_REVIEW_BLOG + blog.getBlogId());
 		return mv;
 	}
 
@@ -65,6 +68,7 @@ public class ReviewController {
 		ModelAndView mv = new ModelAndView(REVIEW_VIDEO_PAGE);
 		ReviewVideo video = reviewVideoService.getVideo(videoName);
 		mv.addObject("video", video);
+		CounterLog.counterLog(logger, CounterConstants.TYPE_REVIEW_VIDEO + video.getVideoId());
 		return mv;
 	}
 }

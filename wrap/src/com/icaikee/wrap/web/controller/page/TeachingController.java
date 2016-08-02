@@ -14,6 +14,7 @@ import com.icaikee.wrap.biz.teaching.TeachingVideoService;
 import com.icaikee.wrap.biz.teaching.model.CartoonInfo;
 import com.icaikee.wrap.biz.teaching.model.Video;
 import com.icaikee.wrap.common.logger.CounterLog;
+import com.icaikee.wrap.scheduler.CounterConstants;
 import com.icaikee.wrap.web.controller.WebConstants;
 
 @Controller
@@ -25,6 +26,7 @@ public class TeachingController {
 
 	private final static String TEACHING_VIDEO_INDEX_PAGE = "teaching/teaching-video-index";
 	private final static String TEACHING_VIDEO_PAGE = "teaching/teaching-video";
+
 	Logger logger = Logger.getLogger(this.getClass());
 
 	@Autowired
@@ -55,7 +57,7 @@ public class TeachingController {
 		mv.addObject("author", cartoon.getCartoonAuthor());
 		mv.addObject("description", cartoon.getCartoonDescription());
 		mv.addObject("accessTime", cartoon.getCartoonAccessTime());
-		CounterLog.counterLog(logger, "lxytc" + cartoon.getCartoonId());
+		CounterLog.counterLog(logger, CounterConstants.TYPE_TEACHING_CARTOON + cartoon.getCartoonId());
 		return mv;
 	}
 
@@ -74,7 +76,7 @@ public class TeachingController {
 		ModelAndView mv = new ModelAndView(TEACHING_VIDEO_PAGE);
 		Video video = videoService.getVideo(videoName);
 		mv.addObject("video", video);
-		CounterLog.counterLog(logger, "lxytv" + video.getVideoId());
+		CounterLog.counterLog(logger, CounterConstants.TYPE_TEACHING_VIDEO + video.getVideoId());
 		return mv;
 	}
 }

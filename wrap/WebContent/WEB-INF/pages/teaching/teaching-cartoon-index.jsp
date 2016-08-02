@@ -73,7 +73,7 @@
 						<img src="${item.cartoonIndexUrl}" />
 					</div>
 					<a href="page/teaching/cartoon/img?chapterId=${item.cartoonChapterId}&cartoonName=${item.cartoonName}&url=${item.cartoonUrl}">${item.cartoonChapterId}:${item.cartoonName}</a>
-					<br/><span>作者：${item.cartoonAuthor }&nbsp;|&nbsp;浏览次数：122</span>
+					<br/><span>作者：${item.cartoonAuthor }&nbsp;|&nbsp;浏览次数：${item.cartoonAccessTime}</span>
 					<br/><span id="description" title="${item.cartoonDescription }">简介：${item.cartoonDescription }</span>
 				</div>
 			</c:forEach> 

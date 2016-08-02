@@ -63,9 +63,9 @@ public class TeachingManagerController {
 	@RequestMapping(value = "/cartoon/upload", method = RequestMethod.POST)
 	public ModelAndView cartoonUpload(HttpServletRequest request, @RequestParam(name = "chapterId") String chapterId,
 			@RequestParam(name = "cartoonName") String cartoonName, @RequestParam(name = "author") String author,
-			@RequestParam(name = "description") String description, @RequestParam(name = "img") MultipartFile img,
+			@RequestParam(name = "description") String description, @RequestParam(name = "imgs[]") MultipartFile[] imgs,
 			@RequestParam(name = "index") MultipartFile index) {
-		cartoonService.saveCartoonInfo(chapterId, cartoonName, author, description, img, index);
+		cartoonService.saveCartoonInfo(chapterId, cartoonName, author, description, imgs, index);
 		return new ModelAndView(WebConstants.SUCCESS_MANAGE_PAGE);
 	}
 

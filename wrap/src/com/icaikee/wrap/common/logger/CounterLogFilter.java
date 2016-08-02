@@ -88,7 +88,7 @@ public class CounterLogFilter extends Filter {
 
 		ALL(-2147483648),
 
-		COUNTER(10);
+		COUNTER(60000);
 
 		int type;
 

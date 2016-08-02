@@ -139,4 +139,13 @@ public class ReviewVideoService {
 		return WebConstants.SUCCESS;
 	}
 
+	@Transactional
+	public void updateAccessTime(int id, int count) {
+		ReviewVideo x = dao.findUnique(ReviewVideo.class, "select x from ReviewVideo x where videoId=?", id);
+		if (x == null)
+			return;
+		x.setVideoAccessTime(count);
+		dao.save(x);
+	}
+
 }

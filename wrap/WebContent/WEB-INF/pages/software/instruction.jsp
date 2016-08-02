@@ -64,6 +64,7 @@
 		<div class="content-box">
 			<div id="software-title" class="software-title">
 				<a href="${downloading}">点此下载软件压缩包</a>
+				<span>下载次数：${downloadTime}</span>
 			</div>
 			<div id="software-content" class="software-content">
 				<img id="img" src="${url}" />

@@ -31,15 +31,21 @@ public class TeachingCartoonService {
 
 	@Transactional
 	public String saveCartoonInfo(String chapterId, String cartoonName, String author, String description,
-			MultipartFile img, MultipartFile index) {
+			MultipartFile[] imgs, MultipartFile index) {
 
 		CartoonInfo ci = getSingleCartoonByChapterId(chapterId);
 		if (ci != null)
 			return WebConstants.FAILURE;
 		try {
-			if (ImageIO.read(img.getInputStream()) == null || ImageIO.read(index.getInputStream()) == null) {
+			if (ImageIO.read(index.getInputStream()) == null) {
 				logger.info("not img");
 				return "not img";
+			}
+			for (MultipartFile img : imgs) {
+				if (ImageIO.read(img.getInputStream()) == null) {
+					logger.info("not img");
+					return "not img";
+				}
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
@@ -56,25 +62,27 @@ public class TeachingCartoonService {
 		cartoon.setCartoonChapterId(chapterId);
 		cartoon.setCartoonAuthor(author);
 		cartoon.setCartoonDescription(description);
-
-		String fileName = img.getOriginalFilename();
-
-		String indexFileName = index.getOriginalFilename();
-
-		String filePath = addrSave + chapterId + "-" + cartoonName + "."
-				+ fileName.substring(fileName.lastIndexOf(".") + 1);
-		String url = addrRead + chapterId + "-" + cartoonName + "." + fileName.substring(fileName.lastIndexOf(".") + 1);
-
-		String indexFilePath = indexAddrSave + "i-" + chapterId + "-" + cartoonName + "."
-				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
-		String indexUrl = indexAddrRead + "i-" + chapterId + "-" + cartoonName + "."
-				+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
-
-		cartoon.setCartoonUrl(url);
-		cartoon.setCartoonIndexUrl(indexUrl);
 		try {
-			img.transferTo(new File(filePath));
+			// 封面文件
+			String indexFileName = index.getOriginalFilename();
+			String indexFilePath = indexAddrSave + "i-" + chapterId + "-" + cartoonName + "."
+					+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+			String indexUrl = indexAddrRead + "i-" + chapterId + "-" + cartoonName + "."
+					+ indexFileName.substring(indexFileName.lastIndexOf(".") + 1);
+			cartoon.setCartoonIndexUrl(indexUrl);
 			index.transferTo(new File(indexFilePath));
+
+			// 漫画列表
+			String url = "";
+			for (int i = 0; i < imgs.length; i++) {
+				MultipartFile img = imgs[i];
+				String fileName = chapterId + "-" + cartoonName + "-" + i;
+				String filePath = addrSave + chapterId + "-" + cartoonName + "-" + i;
+				img.transferTo(new File(filePath));
+				url += addrRead + fileName + ";";
+			}
+			cartoon.setCartoonUrl(url);
+
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 			return WebConstants.FAILURE;
@@ -204,6 +212,15 @@ public class TeachingCartoonService {
 		dao.save(ci);
 
 		return WebConstants.SUCCESS;
+	}
+
+	@Transactional
+	public void updateAccessTime(int id, int count) {
+		CartoonInfo x = dao.findUnique(CartoonInfo.class, "select x from CartoonInfo x where x.cartoonId=?", id);
+		if (x == null)
+			return;
+		x.setCartoonAccessTime(count);
+		dao.save(x);
 	}
 
 }

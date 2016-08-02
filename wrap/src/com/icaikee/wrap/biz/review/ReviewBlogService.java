@@ -143,4 +143,13 @@ public class ReviewBlogService {
 		return WebConstants.SUCCESS;
 	}
 
+	@Transactional
+	public void updateAccessTime(int id, int count) {
+		ReviewBlog x = dao.findUnique(ReviewBlog.class, "select x from ReviewBlog x where blogId=?", id);
+		if (x == null)
+			return;
+		x.setBlogAccessTime(count);
+		dao.save(x);
+	}
+
 }
